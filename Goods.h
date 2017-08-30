@@ -1,7 +1,7 @@
 class Goods
 {
 public:
-	string getName();
+	char* getName();
 	int getGoodsId();
 	char getDesc();
 	int getType();
@@ -16,7 +16,7 @@ public:
 	void showGoods();
 	
 private:
-	string name;	//物品名称
+	char name[20];	//物品名称
 	int goodsId;
 	char desc[256];	//物品描述
 	int type;//物品属性：武器-0，装备-1，药品-2
@@ -26,7 +26,6 @@ private:
 	int addMaxHP;	//增加max HP
 	int addMP;		//增加Mp
 	int addMaxMP;	//增加max MP
-
 	int priceSell;
 	int priceBuy;		
-}
+};

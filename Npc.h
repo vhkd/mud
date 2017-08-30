@@ -1,3 +1,5 @@
+#include "Role.h"
+
 class Npc
 {
 public:
@@ -7,6 +9,6 @@ public:
 	bool isChatted();
 	
 private:
-	string name;
+	char name[20];
 	
-}
+};

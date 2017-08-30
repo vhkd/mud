@@ -9,14 +9,14 @@ public:
 	Store();
 	~Store();
 
-	showStores();
-	storeToPlayer(Role player, Bag bag);
-	playerToStore(Role player, Bag bag);
+	void showStores();
+	void storeToPlayer(Role player, Bag bag);
+	void playerToStore(Role player, Bag bag);
 	
 private:
-	map<Goods.goodsId,int> stores;
-}
+	//std::map<Goods.goodsId,int> stores;
+};
 
 Store::Store(){
-	map<Goods.goodsId id,int num> stores;
+	//std::map<Goods.goodsId id,int num> stores;
 }

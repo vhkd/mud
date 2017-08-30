@@ -20,4 +20,4 @@ public:
 	
 private:
 	int round;//回合数
-}
+};

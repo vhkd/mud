@@ -3,8 +3,8 @@
 class Enemy {
 
 public:
-	FightOrAnswer();
-	string getName();
+	void FightOrAnswer();
+	char *getName();
 	int getType();
 	int getHealth_max();
 	int getHealth();
@@ -14,7 +14,7 @@ public:
 	int getDefend();
 	
 private:
-	string name;
+	char name[20];
 	int type;
 	int health_max;
 	int health;
@@ -24,11 +24,12 @@ private:
 	//int exp;
 	//int level;
 	int defend;
-}
+};
+
 class enemy_small:public Enemy{
 	
-}
+};
 
 class enemy_boss:public Enemy{
 	
-}
+};

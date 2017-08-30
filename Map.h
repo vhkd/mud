@@ -3,13 +3,11 @@
 class Map
 {
 public:
-	ShowMap();
-	Store();
-	Story();
+	void ShowMap();
+	void Store();
+	void Story();
 	
 	
 private:	
-	string name;
-	
-	
-}
+	char name[20];
+};

@@ -8,14 +8,14 @@ public:
 	Bag();
 	~Bag();
 
-	showBags();
-	addGoods();
-	reduceGoods();
+	void showBags();
+	void addGoods();
+	void reduceGoods();
 	
 private:
-	map<Goods.goodsId,int> bags;
-}
+	//map<Goods.goodsId,int> bags;
+};
 
 Bag::Bag(){
-	map<Goods.goodsId id,int num> bags;
+	//map<Goods.goodsId id,int num> bags;
 }

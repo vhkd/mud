@@ -5,7 +5,7 @@ public:
 	Role(int type);
 	~Role();
 	
-	string getName();
+	char* getName();
 	int getType();
 	int getHealth_max();
 	int getHealth();
@@ -20,7 +20,7 @@ public:
 	void Bag();
 
 private:
-	string name;
+	char name[20];
 	int type;
 	int health_max;
 	int health;
@@ -31,4 +31,4 @@ private:
 	int level;
 	int defend;
 	int bag[20] = {0,};
-}
+};
