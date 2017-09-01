@@ -7,11 +7,18 @@ public:
 	char *getName();
 	int getType();
 	int getHealth_max();
+	int setHealth_max(int hp_m);
 	int getHealth();
+	int setHealth(int hp);
+	
 	int getMagic_max();
+	int setMagic_max(int mp_m);
 	int getMagic();
+	int setMagic(int mp);
 	int getAttack();
+	int setAttack(int attack);
 	int getDefend();
+	int setDefend(int defend);
 	
 private:
 	char name[20];
@@ -21,8 +28,6 @@ private:
 	int magic_max;
 	int magic;
 	int attack;
-	//int exp;
-	//int level;
 	int defend;
 };
 
