@@ -16,15 +16,15 @@ public:
 	int getMagic();
 	int setMagic(int mp);
 	int getAttack();
-	int setAttack(int attack);
+	int setAttack(int a);
 	int getDefend();
-	int setDefend(int defend);
+	int setDefend(int d);
 	int getExp();
-	int setExp(int exp);
+	int setExp(int e);
 	int getLevel();
-	int setLevel(int level);
+	int setLevel(int l);
 	int getMoney();
-	int setMoney(int money);
+	int setMoney(int m);
 	
 	void showRole();//人物属性 当前装备
 	void Bag();

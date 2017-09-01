@@ -5,9 +5,10 @@ class Map
 public:
 	void ShowMap();
 	void Store();
-	void Story();
+	void Story(int mapNum);
 	
 	
 private:	
 	char name[20];
+	int mapNum;
 };

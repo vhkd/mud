@@ -1,8 +1,10 @@
 #include "Skill.h"
 
 class Enemy {
-
 public:
+	Enemy(int t);
+	~Enemy();
+
 	void FightOrAnswer();
 	char *getName();
 	int getType();
@@ -16,9 +18,9 @@ public:
 	int getMagic();
 	int setMagic(int mp);
 	int getAttack();
-	int setAttack(int attack);
+	int setAttack(int a);
 	int getDefend();
-	int setDefend(int defend);
+	int setDefend(int d);
 	
 private:
 	char name[20];
