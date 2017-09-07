@@ -6,8 +6,8 @@ Goods::Goods(int id)
 	{
 	case '0': {
 		goodsId = id;
-		name = "��";
-		desc = "ɽ���Է���������ĵ�,�����ֲ�,��ǿ������������";
+		name = "柴刀";
+		desc = "山林樵夫用来砍柴的刀,做工粗糙,勉强可以用作武器";
 		type = 0;
 		addAttack = 10;
 		priceBuy = 20;
@@ -16,8 +16,8 @@ Goods::Goods(int id)
 	}
 	case '1': {
 		goodsId = id;
-		name = "���ֽ�";
-		desc = "���Ϻ�����������һ�����ε�ʵ���ͱ���,���߽����ر�";
+		name = "精钢剑";
+		desc = "用料和做工都上了一定档次的实用型兵器,行走江湖必备";
 		type = 0;
 		addAttack = 20;
 		priceBuy = 40;
@@ -26,8 +26,8 @@ Goods::Goods(int id)
 	}
 	case '2': {
 		goodsId = id;
-		name = "������";
-		desc = "��˵���������������ù��Ľ�,��ʵ�����޴ӿ���";
+		name = "霸王剑";
+		desc = "传说中西楚霸王项羽用过的剑,真实性已无从考据";
 		type = 0;
 		addAttack = 30;
 		priceBuy = 60;
@@ -36,8 +36,8 @@ Goods::Goods(int id)
 	}
 	case '3': {
 		goodsId = id;
-		name = "��ݽ�";
-		desc = "�񱳿��еľ�ݵ�,��������ƻƽ����";
+		name = "锯齿金刀";
+		desc = "厚背宽刃的锯齿刀,金光闪闪似黄金打造";
 		type = 0;
 		addAttack = 40;
 		priceBuy = 80;
@@ -46,18 +46,68 @@ Goods::Goods(int id)
 	}
 	case '4': {
 		goodsId = id;
-		name = "���ӽ�";
-		desc = "���ʹ���,������ֱ,����ʱ��׺����,�ƽ��о��Ӷ�����";
+		name = "君子剑";
+		desc = "剑鞘古朴,刃锐且直,出鞘时如白虹贯日,似剑中君子而得名";
 		type = 0;
 		addAttack = 50;
 		priceBuy = 100;
 		priceSell = 50;
 		break;
 	}
+	case '5': {
+		goodsId = id;
+		name = "九环刀";
+		desc = "刀背穿有九枚大铁环作为装饰,刀刃又宽又厚,舞动时霸气十足";
+		type = 0;
+		addAttack = 60;
+		priceBuy = 120;
+		priceSell = 60;
+		break;
+	}
+	case '6': {
+		goodsId = id;
+		name = "猛兽魂";
+		desc = "剑刃上有形似野兽牙齿的倒刺，可以用来出其不意地夺取敌人武器";
+		type = 0;
+		addAttack = 70;
+		priceBuy = 140;
+		priceSell = 70;
+		break;
+	}
+	case '7': {
+		goodsId = id;
+		name = "无影飞剑";
+		desc = "剑刃薄而透明，只有在夜晚借助月光反射才能看到剑刃的形影";
+		type = 0;
+		addAttack = 80;
+		priceBuy = 160;
+		priceSell = 80;
+		break;
+	}
+	case '8': {
+		goodsId = id;
+		name = "大夏龙雀";
+		desc = "制作极精巧，刀背雕饰着龙雀装饰的环首刀，是世所罕见的珍品";
+		type = 0;
+		addAttack = 90;
+		priceBuy = 180;
+		priceSell = 90;
+		break;
+	}
+	case '9': {
+		goodsId = id;
+		name = "纯均";
+		desc = "铸剑名师欧冶子所铸最后一把剑，剑饰星辰，尊贵无双。";
+		type = 0;
+		addAttack = 100;
+		priceBuy = 200;
+		priceSell = 100;
+		break;
+	}
 	case '10': {
 		goodsId = id;
-		name = "�಼��";
-		desc = "��ͨ�˼����������ķ���,��������ö�����ͨ";
+		name = "青布衣";
+		desc = "普通人家男性所穿的服饰,面料与剪裁都很普通";
 		type = 1;
 		addDefend = 5;
 		addMaxHP = 10;
@@ -68,8 +118,8 @@ Goods::Goods(int id)
 	}
 	case '11': {
 		goodsId = id;
-		name = "���ּ�";
-		desc = "ʹ�þ������ƵĿ���,�ܹ���Ч���������˺�";
+		name = "精钢甲";
+		desc = "使用精钢烧制的盔甲,能够有效降低外界的伤害";
 		type = 1;
 		addDefend = 10;
 		addMaxHP = 20;
@@ -80,8 +130,8 @@ Goods::Goods(int id)
 	}
 	case '12': {
 		goodsId = id;
-		name = "������";
-		desc = "����˿�������׿�׺�ϳ���״,ÿ�������ĸ������׿�,��������";
+		name = "环锁铠";
+		desc = "由铁丝或铁环套扣缀合成衣状,每环与另四个环相套扣,形如网锁";
 		type = 1;
 		addDefend = 20;
 		addMaxHP = 30;
@@ -92,8 +142,8 @@ Goods::Goods(int id)
 	}
 	case '13': {
 		goodsId = id;
-		name = "����ս��";
-		desc = "�����������͸��ˮ��,ʵ����ȴ����ǧ�겻������ɽ�����Ƴ�,�ǳ����";
+		name = "冰晶战衣";
+		desc = "外表看来宛如透明水晶,实际上却是用千年不化的天山寒冰制成,非常珍贵";
 		type = 1;
 		addDefend = 30;
 		addMaxHP = 40;
@@ -104,8 +154,68 @@ Goods::Goods(int id)
 	}
 	case '14': {
 		goodsId = id;
-		name = "��˿��⬼�";
-		desc = "�ý�˿��ǧ����֦��ϱ�֯����,�����ҵ�ǹ����,��һ���ѵõ��䱦";
+		name = "金丝软猬甲";
+		desc = "用金丝和千年滕枝混合编织而成,柔软且刀枪不入,是一件难得的珍宝";
+		type = 1;
+		addDefend = 40;
+		addMaxHP = 50;
+		addMaxMP = 50;
+		priceBuy = 90;
+		priceSell = 45;
+		break;
+	}
+	case '15': {
+		goodsId = id;
+		name = "琥珀战甲";
+		desc = "以青绿色的琥珀为主、佐以金色琥珀为衬，绿色的肩甲以手工亮片镶成，雕工精细华丽";
+		type = 1;
+		addDefend = 40;
+		addMaxHP = 50;
+		addMaxMP = 50;
+		priceBuy = 90;
+		priceSell = 45;
+		break;
+	}
+	case '16': {
+		goodsId = id;
+		name = "青云战袍";
+		desc = "华丽无比，远观行若流云，更显玉树临风。";
+		type = 1;
+		addDefend = 40;
+		addMaxHP = 50;
+		addMaxMP = 50;
+		priceBuy = 90;
+		priceSell = 45;
+		break;
+	}
+	case '17': {
+		goodsId = id;
+		name = "云练天衣";
+		desc = "外形飘逸轻薄的丝衣，穿在身上仿佛有云气环绕";
+		type = 1;
+		addDefend = 40;
+		addMaxHP = 50;
+		addMaxMP = 50;
+		priceBuy = 90;
+		priceSell = 45;
+		break;
+	}
+	case '18': {
+		goodsId = id;
+		name = "天蚕宝甲";
+		desc = "用天蚕丝线所织，色泽偏白，质地坚韧，珍贵异常";
+		type = 1;
+		addDefend = 40;
+		addMaxHP = 50;
+		addMaxMP = 50;
+		priceBuy = 90;
+		priceSell = 45;
+		break;
+	}
+	case '19': {
+		goodsId = id;
+		name = "紫龙天罡铠";
+		desc = "传说是由龙气化作紫色鳞片镶嵌而成的战甲，从头到脚绵密包裹";
 		type = 1;
 		addDefend = 40;
 		addMaxHP = 50;
@@ -116,8 +226,8 @@ Goods::Goods(int id)
 	}
 	case '20': {
 		goodsId = id;
-		name = "��ҩ";
-		desc = "����������ҩ,����������Ѫ";
+		name = "金创药";
+		desc = "常见的疗伤药,补充少量气血";
 		type = 2;
 		addHP = 30;
 		priceBuy = 10;
@@ -126,8 +236,8 @@ Goods::Goods(int id)
 	}
 	case '21': {
 		goodsId = id;
-		name = "С����";
-		desc = "ɢ������������ɫҩ��,���������Ѫ";
+		name = "小还丹";
+		desc = "散发着香气的紫色药丸,补充大量气血";
 		type = 2;
 		addHP = 60;
 		priceBuy = 20;
@@ -136,8 +246,8 @@ Goods::Goods(int id)
 	}
 	case '22': {
 		goodsId = id;
-		name = "������";
-		desc = "����ҩ�ﾫ�����ɵĵ�ҩ,������������";
+		name = "定神香";
+		desc = "名贵药物精心炼成的丹药,补充少量内力";
 		type = 2;
 		addMP = 30;
 		priceBuy = 10;
@@ -146,8 +256,8 @@ Goods::Goods(int id)
 	}
 	case '23': {
 		goodsId = id;
-		name = "��ˮ��Ԫ��";
-		desc = "����Ũ��������ҩ��,�����������";
+		name = "风水混元丹";
+		desc = "有着浓郁香气的药丸,补充大量内力";
 		type = 2;
 		addMP = 60;
 		priceBuy = 20;
@@ -231,19 +341,19 @@ void Goods::showGoods()
 {
 	cout << name << endl;
 	cout << desc << endl;
-	if (type == 0) //����
+	if (type == 0) //武器
 	{
-		cout << "������:" << addAttack << endl;
+		cout << "攻击力:" << addAttack << endl;
 	}
-	if (type == 1) //����
+	if (type == 1) //防具
 	{
-		cout << "������:" << addDefend << endl;
-		cout << "������Ѫ:" << addMaxHP << endl;
-		cout << "��������:" << addMaxMP << endl;
+		cout << "防御力:" << addDefend << endl;
+		cout << "增加气血:" << addMaxHP << endl;
+		cout << "增加内力:" << addMaxMP << endl;
 	}
-	if (type == 3) //ҩƷ
+	if (type == 3) //药品
 	{
-		cout << "�ظ���Ѫ:" << addHP << endl;
-		cout << "�ظ�����:" << addMP << endl;
+		cout << "回复气血:" << addHP << endl;
+		cout << "回复内力:" << addMP << endl;
 	}
 }

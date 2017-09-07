@@ -1,3 +1,6 @@
+#ifndef NPC_H
+#define NPC_H
+
 #include "Role.h"
 
 class Npc
@@ -12,3 +15,5 @@ private:
 	char name[20];
 	
 };
+
+#endif

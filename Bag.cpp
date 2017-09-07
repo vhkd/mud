@@ -2,11 +2,6 @@
 
 Bag::Bag()
 {
-	int bagsMax = 20;//
-	for (int i = 0; i < bagsMax; i++)
-	{
-		bags[i] = 0;
-	}
 }
 
 Bag::~Bag()
@@ -15,12 +10,12 @@ Bag::~Bag()
 
 void Bag::showBags()
 {
-	cout << "当前背包:" << endl;
-	cout << "物品名称      数量" << endl;
+	cout << "褰撳墠鑳屽寘:" << endl;
+	cout << "鐗╁搧鍚嶇О      鏁伴噺" << endl;
 	map<int, int>::iterator iter;
 	for (iter = bags.begin(); iter != bags.end(); ++iter)
 	{
-		cout << goods[iter->first].getName() << iter->second << endl;
+		cout << goods[iter->first].getName() << "    " << iter->second << endl;
 	}
 }
 

@@ -1,7 +1,12 @@
+#ifndef BAG_H
+#define BAG_H
+
 #include <iostream>  
 #include <map>  
 #include "Goods.h"
 #include "Role.h"
+
+using namespace std;
 
 class Bag {
 public:
@@ -9,13 +14,11 @@ public:
 	~Bag();
 
 	void showBags();
-	void addGoods();
-	void reduceGoods();
+	void addGoods(int id, int num);
+	void reduceGoods(int id, int num);
 	
 private:
-	//map<Goods.goodsId,int> bags;
+	map<int,int> bags;
 };
 
-Bag::Bag(){
-	//map<Goods.goodsId id,int num> bags;
-}
+#endif 

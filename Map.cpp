@@ -5,7 +5,7 @@ using namespace std;
 
 void Map::ShowMap()
 {
-	cout;
+	
 }
 
 void Map::Store()

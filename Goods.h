@@ -1,12 +1,21 @@
+#ifndef GOODS_H
+#define GOODS_H
+
+#include <string>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 class Goods
 {
 public:
 	Goods(int id);
 	~Goods();
 
-	char* getName();
+	string getName();
 	int getGoodsId();
-	char getDesc();
+	string getDesc();
 	int getType();
 	int getAddAttack();
 	int getAddDefend();	
@@ -19,10 +28,10 @@ public:
 	void showGoods();
 	
 private:
-	char name[20];	//物品名称
+	string name;	//物品名称
 	int goodsId;
-	char desc[256];	//物品描述
-	int type;//物品属性：武器-0，装备-1，药品-2
+	string desc;	//物品描述
+	int type;//物品属性：武器-0，防具-1，药品-2
 	int addAttack = 0;	//增加攻击
 	int addDefend = 0;	//增加防御
 	int addHP = 0;		//增加Hp
@@ -33,4 +42,7 @@ private:
 	int priceBuy;		
 };
 
-Goods goods[20];//构造对象数组
+//物品实例化
+Goods goods[24] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23};
+
+#endif

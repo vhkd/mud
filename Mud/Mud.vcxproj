@@ -158,9 +158,14 @@
     <ClInclude Include="..\Store.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Bag.cpp" />
     <ClCompile Include="..\Enemy.cpp" />
+    <ClCompile Include="..\Fight.cpp" />
+    <ClCompile Include="..\Goods.cpp" />
     <ClCompile Include="..\Map.cpp" />
     <ClCompile Include="..\Role.cpp" />
+    <ClCompile Include="..\Skill.cpp" />
+    <ClCompile Include="..\Store.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

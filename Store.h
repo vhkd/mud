@@ -1,8 +1,13 @@
+#ifndef STORE_H
+#define STORE_H
+
 #include <iostream>  
 #include <map>  
 #include "Goods.h"
 #include "Bag.h"
 #include "Role.h"
+
+using namespace std;
 
 class Store {
 public:
@@ -10,13 +15,10 @@ public:
 	~Store();
 
 	void showStores();
-	void storeToPlayer(Role player, Bag bag);
-	void playerToStore(Role player, Bag bag);
+	void storeToPlayer(Role player, Bag bags);
+	void playerToStore(Role player, Bag bags);
 	
 private:
-	//std::map<Goods.goodsId,int> stores;
+	map<int, int> stores;
 };
-
-Store::Store(){
-	//std::map<Goods.goodsId id,int num> stores;
-}
+#endif

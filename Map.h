@@ -1,3 +1,6 @@
+#ifndef MAP_H
+#define MAP_H
+
 #include "Npc.h"
 
 class Map
@@ -12,3 +15,5 @@ private:
 	char name[20];
 	int mapNum;
 };
+
+#endif
