@@ -1,4 +1,4 @@
-#ifndef ENEMY_H
+﻿#ifndef ENEMY_H
 #define ENEMY_H
 
 #include <string>
@@ -8,8 +8,6 @@ class Enemy {
 public:
 	Enemy();
 	~Enemy();
-
-	void FightOrAnswer();
 
 	string getName();
 	void setType(int whattype);

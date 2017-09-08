@@ -94,11 +94,10 @@ public:
 		skill_2Name = "独孤九剑";
 		skill_3Name = "疯魔杖法";
 		skill_4Name = "四象掌";
-
-		skill_1Disc = "长兵器的入门功夫，虽然普通，也能让你更强壮。";
-		skill_2Disc = "这大概是最厉害的剑法了，习得此剑，当可独步天下。";
-		skill_3Disc = "少林疯僧自创的杖法，能显著提升身法。";
-		skill_4Disc = "峨嵋入门掌法。提升内力的效果明显。";
+		skill_1Disc = "长兵器的入门功夫，虽然普通，也能让你更强壮";
+		skill_2Disc = "这大概是最厉害的剑法了，习得此剑，当可独步天下";
+		skill_3Disc = "少林疯僧自创的杖法，能显著提升身法";
+		skill_4Disc = "峨嵋入门掌法。提升内力的效果明显";
 
 		skill_1Type = 1;
 		skill_2Type = 1;

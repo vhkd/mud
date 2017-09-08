@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <vector>
 #include "Store.h"
@@ -35,10 +35,11 @@ void Store::storeToPlayer(Role player, Bag bags)
 	cin >> goodsId;
 	cout << "请输入要购买的数量" << endl;
 	cin >> goodsNum;
-	if (player.getMoney() >= goods[goodsId].getPriceBuy * goodsNum)
+	int totalPrice = int(goods[goodsId].getPriceBuy()) * int(goodsNum);
+	if (player.getMoney() >= totalPrice)
 	{
 		bags.addGoods(goodsId, goodsNum);
-		player.setMoney(player.getMoney() - goods[goodsId].getPriceBuy * goodsNum);
+		player.setMoney(player.getMoney() - totalPrice);
 		cout << "购买成功" << endl;
 	}
 	else
@@ -54,7 +55,8 @@ void Store::playerToStore(Role player, Bag bags)
 	cin >> goodsId;
 	cout << "请输入要卖出的数量" << endl;
 	cin >> goodsNum;
+	int totalPrice = int(goods[goodsId].getPriceSell()) * int(goodsNum);
 	bags.reduceGoods(goodsId, goodsNum);
-	player.setMoney(player.getMoney() + goods[goodsId].getPriceBuy * goodsNum);
+	player.setMoney(player.getMoney() + totalPrice);
 	cout << "出售成功" << endl;
 }

@@ -1,9 +1,14 @@
-#include <iostream>
+﻿#include <iostream>
 #include "Enemy.h"
 
 using namespace std;
 
-void Enemy::FightOrAnswer() {
+Enemy::Enemy()
+{
+}
+
+Enemy::~Enemy()
+{
 }
 
 string Enemy::getName() {

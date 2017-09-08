@@ -1,4 +1,4 @@
-#ifndef FIGHT_H
+﻿#ifndef FIGHT_H
 #define FIGHT_H
 
 #include "Enemy.h"

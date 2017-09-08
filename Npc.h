@@ -6,6 +6,10 @@
 class Npc
 {
 public:
+	Npc();
+	Npc(int num);
+	~Npc();
+
 	void chat();
 	void getEquip();
 	void getMoney(Role player);
