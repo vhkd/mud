@@ -77,6 +77,26 @@ int Enemy::setDefend(int d) {
 	return 0;
 }
 
+int Enemy::getGoodsId()
+{
+	return goodsId;
+}
+
+int Enemy::getExp()
+{
+	return exp;
+}
+
+int Enemy::getMoney()
+{
+	return money;
+}
+
+double Enemy::useSkill()
+{
+	return 0.0;
+}
+
 void Enemy::showEnemy() {
 	cout << "当前怪物属性:" << endl;
 	cout << "名称:" << name << endl;
@@ -423,6 +443,7 @@ double Enemy_7::useSkill() {
 
 
 //怪物八
+/*
 Enemy_8::Enemy_8() {
 	name = "最强霸龙纳什男爵";
 	type = 8;
@@ -437,6 +458,7 @@ Enemy_8::Enemy_8() {
 	exp = 100;		//打死该怪物得到的经验
 	money = 500;		//打死该怪物得到的金钱
 }
+*/
 
 double Enemy_8::useSkill() {
 	if (getMagic() < 120) {

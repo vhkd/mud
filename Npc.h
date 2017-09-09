@@ -1,4 +1,4 @@
-#ifndef NPC_H
+﻿#ifndef NPC_H
 #define NPC_H
 
 #include "Role.h"

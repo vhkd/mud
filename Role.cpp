@@ -7,7 +7,7 @@ using namespace std;
 Role::Role(int t)//1战士2剑客3法师
 {
 	switch (t) {
-	case '1': {
+	case 1: {
 		name = "11111";
 		type = 1;
 		health_max = 160;
@@ -23,7 +23,7 @@ Role::Role(int t)//1战士2剑客3法师
 		skill = Role_1Skill::Role_1Skill();
 		break;
 	}
-	case '2': {
+	case 2: {
 		name = "22222";
 		type = 2;
 		health_max = 200;
@@ -39,7 +39,7 @@ Role::Role(int t)//1战士2剑客3法师
 		skill = Role_2Skill::Role_2Skill();
 		break;
 	}
-	case '3': {
+	case 3: {
 		name = "33333";
 		type = 3;
 		health_max = 120;
@@ -350,7 +350,7 @@ int Role::setLevel(int l) {
 			skillLevel--;
 	}
 	level = l;
-	health_Max =
+	health_max = 100;
 		return 0;
 }
 
@@ -379,5 +379,5 @@ void Role::getBag() {
 }
 
 bool Role::setBag(int goodsId) {
-
+	return true;
 }

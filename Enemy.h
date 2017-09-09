@@ -3,12 +3,13 @@
 
 #include <string>
 
+using namespace std;
+
 class Enemy {
 
 public:
 	Enemy();
 	~Enemy();
-
 	string getName();
 	void setType(int whattype);
 	int getType();
@@ -35,7 +36,7 @@ public:
 	int getExp();			//增加经验
 	int getMoney();			//增加金钱
 
-	virtual double useSkill();	//怪物使用技能，返回伤害数值
+	double useSkill();	//怪物使用技能，返回伤害数值
 
 	void showEnemy();
 
@@ -140,4 +141,4 @@ public:
 	double useSkill();
 };
 
-#endif // !ENEMY_H
+#endif

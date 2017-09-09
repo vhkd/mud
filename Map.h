@@ -1,4 +1,4 @@
-#ifndef MAP_H
+﻿#ifndef MAP_H
 #define MAP_H
 
 #include <string>
@@ -10,39 +10,23 @@ using namespace std;
 class Map
 {
 public:
-	Map();
+	Map();//初始位置为地图0
+	Map(int pos); //由参数pos为所在位置
 	~Map();
-	virtual void ShowMap();
+	void ShowMap();
 	void Store();
-	void Story(int mapNum);
-	
-	
-protected:	
-	string name;
-};
-
-class Map_Total : public Map
-{
-public:
-	Map_Total();
-	~Map_Total();
-
-	void ShowMap();
-};
-
-class Map_Separate : public Map
-{
-public:
-	Map_Separate();
-	Map_Separate(int num);
-	~Map_Separate();
-
-	void ShowMap();
 	void Move(char order);
 
+	bool isThereFight();
+	
+	string getName();
+
 private:
+	string name;
+	int position; //当前位置
+	string mapName[9] = { "地图0","地图1","地图2","地图3","地图4","地图5","地图6","地图7","地图8" };
 	int mapNum;
-	char pos[5][5];
+	char pos[6][6];
 	int dx;
 	int dy;
 };

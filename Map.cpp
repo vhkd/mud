@@ -1,10 +1,80 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include "Map.h"
 
 using namespace std;
 
 Map::Map()
 {
+	Map(0);
+}
+
+Map::Map(int p)
+{
+	position = p;
+	switch (p)
+	{
+	case'0': {
+		dx = 5;
+		dy = 2;
+		break;
+	}
+	case'1': {
+		dx = 4;
+		dy = 2;
+		break;
+	}
+	case'2' {
+		dx = 3;
+		dy = 2;
+		break;
+	}
+	case'3': {
+		dx = 3;
+		dy = 1;
+		break;
+	}
+	case'4': {
+		dx = 2;
+		dy = 1;
+		break;
+	}
+	case'5': {
+		dx = 2;
+		dy = 0;
+		break;
+	}
+	case'6': {
+		dx = 3;
+		dy = 3;
+		break;
+	}
+	case'7': {
+		dx = 2;
+		dy = 3;
+		break;
+	}
+	case'8': {
+		dx = 1;
+		dy = 3;
+		break;
+	}
+	case'9': {
+		dx = 0;
+		dy = 3;
+		break;
+	}
+	default:
+		break;
+	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		for (int j = 0; j < 6; j++)
+		{
+			pos[i][j] = ' ';
+		}
+	}
+	pos[dx][dy] = '*';
 }
 
 Map::~Map()
@@ -19,169 +89,108 @@ void Map::Story(int mapNum)
 {
 }
 
-Map_Total::Map_Total()
+
+void Map::ShowMap()
 {
+	system("cls");
+	cout << "ä¸–ç•Œåœ°å›¾:" << endl;
+	printf("                                  __________\n");
+	printf("                                 |          |\n");
+	printf("                                 |          |\n");
+	printf("                                 |  åœ°å›¾9   |\n");
+	printf("                                 |    %c     |\n", pos[0][3]);
+	printf("                                 |          |\n");
+	printf("                                 |__________|\n");
+	printf("                                 |          |\n");
+	printf("                                 |          |\n");
+	printf("                                 |  åœ°å›¾8   |\n");
+	printf("                                 |    %c     |\n", pos[1][3]);
+	printf("                                 |          |\n");
+	printf("___________ __________           |__________|\n");
+	printf("|          |          |          |          |\n");
+	printf("|          |          |          |          |\n");
+	printf("|  åœ°å›¾5   |  åœ°å›¾4   |          |  åœ°å›¾7   |\n");
+	printf("|    %c     |    %c     |          |    %c     |\n", pos[2][0], pos[2][1], pos[2][3]);
+	printf("|          |          |          |          |\n");
+	printf("|__________|__________|__________|__________|\n");
+	printf("           |          |          |          |\n");
+	printf("           |          |          |          |\n");
+	printf("           |  åœ°å›¾3   |  åœ°å›¾2   |  åœ°å›¾6   |\n");
+	printf("           |     %c    |    %c     |    %c     |\n", pos[3][1], pos[3][2], pos[3][3]);
+	printf("           |          |          |          |\n");
+	printf("           |__________|__________|__________|\n");
+	printf("                      |          |\n");
+	printf("                      |          |\n");
+	printf("                      |  åœ°å›¾1   |\n");
+	printf("                      |    %c     |\n", pos[4][2]);
+	printf("                      |          |\n");
+	printf("                      |__________|\n");
+	printf("                      |          |\n");
+	printf("                      |          |\n");
+	printf("                      |  åœ°å›¾0   |\n");
+	printf("                      |    %c     |\n", pos[5][2]);
+	printf("                      |          |\n");
+	printf("                      |__________|\n");
+	cout << "æ‚¨çŽ°åœ¨çš„ä½ç½®ä¸º" << mapName[position] << endl;
 }
 
-Map_Total::~Map_Total()
-{
-}
 
-void Map_Total::ShowMap()
-{
-	cout << "ÊÀ½çµØÍ¼:" << endl;
-	cout << "          999999               " << endl;
-	cout << "             \ "                 << endl;
-	cout << "              \  "               << endl;
-	cout << "    888888   777777  "           << endl;
-	cout << "        \      |    "            << endl;
-	cout << "         \    666666     "       << endl;
-	cout << "          |       \    "         << endl;
-	cout << "          |       555555       " << endl;
-	cout << "          |        /"            << endl;
-	cout << "       333333    444444     "    << endl;
-	cout << "           \    /     "          << endl;
-	cout << "           222222 "              << endl;
-	cout << "                \__111111"       << endl;
-}
-
-Map_Separate::Map_Separate()
-{
-}
-
-Map_Separate::Map_Separate(int num)
-{
-	dx = 0;
-	dy = 0;
-
-	for (int i = 0; i < 5; i++)
-	{
-		for (int j = 0; j < 5; j++)
-		{
-			pos[i][j] = ' ';
-		}
-	}
-	pos[dx][dy] = '*';
-
-	switch (num)
-	{
-	case'1': {
-		name = "µØÍ¼1";
-		mapNum = 1;
-		break;
-	}
-	case'2': {
-		name = "µØÍ¼2";
-		mapNum = 2;
-		break;
-	}
-	case'3': {
-		name = "µØÍ¼3";
-		mapNum = 3;
-		break;
-	}
-	case'4': {
-		name = "µØÍ¼4";
-		mapNum = 4;
-		break;
-	}
-	case'5': {
-		name = "µØÍ¼5";
-		mapNum = 5;
-		break;
-	}
-	case'6': {
-		name = "µØÍ¼6";
-		mapNum = 6;
-		break;
-	}
-	case'7': {
-		name = "µØÍ¼7";
-		mapNum = 7;
-		break;
-	}
-	case'8': {
-		name = "µØÍ¼8";
-		mapNum = 8;
-		break;
-	}
-	case'9': {
-		name = "µØÍ¼9";
-		mapNum = 9;
-		break;
-	}
-			
-	default:
-		break;
-	}
-}
-
-Map_Separate::~Map_Separate()
-{
-}
-
-void Map_Separate::ShowMap()
-{
-	printf(" _______________________________________\n");
-	printf("|       |       |       |       |       |\n");
-	printf("|   %c   |   %c   |   %c   |   %c   |   %c   |\n", pos[0][0], pos[0][1], pos[0][2], pos[0][3], pos[0][4]);
-	printf("|_______|_______|_______|_______|_______|\n");
-	printf("|       |       |       |       |       |\n");
-	printf("|   %c   |   %c   |   %c   |   %c   |   %c   |\n", pos[1][0], pos[1][1], pos[1][2], pos[1][3], pos[1][4]);
-	printf("|_______|_______|_______|_______|_______|\n");
-	printf("|       |       |       |       |       |\n");
-	printf("|   %c   |   %c   |   %c   |   %c   |   %c   |\n", pos[2][0], pos[2][1], pos[2][2], pos[2][3], pos[2][4]);
-	printf("|_______|_______|_______|_______|_______|\n");
-	printf("|       |       |       |       |       |\n");
-	printf("|   %c   |   %c   |   %c   |   %c   |   %c   |\n", pos[3][0], pos[3][1], pos[3][2], pos[3][3], pos[3][4]);
-	printf("|_______|_______|_______|_______|_______|\n");
-	printf("|       |       |       |       |       |\n");
-	printf("|   %c   |   %c   |   %c   |   %c   |   %c   |\n", pos[4][0], pos[4][1], pos[4][2], pos[4][3], pos[4][4]);
-	printf("|_______|_______|_______|_______|_______|\n");
-}
-
-void Map_Separate::Move(char order)
+void Map::Move(char order)
 {
 	pos[dx][dy] = ' ';
 	switch (order)
 	{
 		case 'w': {
-			if (dx > 0) {
+			if (position == 0 || position == 1 || position == 3 || position == 6 || position == 7 || position == 8) {
 				dx--;
+				position++;
 			}
 			else
 			{
-				cout << "ÒÆ¶¯Ê§°Ü" << endl;
+				cout << "ç§»åŠ¨å¤±è´¥" << endl;
 			}
 			break;
 		}
 		case 'a': {
-			if (dy > 0) {
+			if (position == 2 || position == 4 ) {
 				dy--;
+				position++;
+			}
+			else if (position == 6)
+			{
+				dy--;
+				position = 2;
 			}
 			else
 			{
-				cout << "ÒÆ¶¯Ê§°Ü" << endl;
+				cout << "ç§»åŠ¨å¤±è´¥" << endl;
 			}
 			break;
 		}
 		case 's': {
-			if (dx < 4) {
+			if (position == 1 || position == 2 || position == 4 || position == 7 || position == 8 || position == 9) {
 				dx++;
+				position--;
 			}
 			else
 			{
-				cout << "ÒÆ¶¯Ê§°Ü" << endl;
+				cout << "ç§»åŠ¨å¤±è´¥" << endl;
 			}
 			break;
 		}
 		case 'd': {
-			if (dy < 4) {
+			if (position == 3 || position == 5 ){
 				dy++;
+				position--;
+			}
+			else if (position == 2)
+			{
+				dy++;
+				position = 6;
 			}
 			else
 			{
-				cout << "ÒÆ¶¯Ê§°Ü" << endl;
+				cout << "ç§»åŠ¨å¤±è´¥" << endl;
 			}
 			break;
 		}
@@ -189,4 +198,9 @@ void Map_Separate::Move(char order)
 			break;
 	}
 	pos[dx][dy] = '*';
+}
+
+string Map::getName()
+{
+	return mapName[position];
 }

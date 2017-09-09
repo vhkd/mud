@@ -1,9 +1,11 @@
-#ifndef ROLE_H
+﻿#ifndef ROLE_H
 #define ROLE_H
 
 #include <string>
 #include "Skill.h"
 #include "Bag.h"
+
+using namespace std;
 
 class Role {
 public:
