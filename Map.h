@@ -3,6 +3,7 @@
 
 #include <string>
 #include <cstdio>
+#include "Enemy.h"
 #include "Npc.h"
 
 using namespace std;
@@ -16,9 +17,10 @@ public:
 	void ShowMap();
 	void Store();
 	void Move(char order);
-
+	bool isThereChat();
 	bool isThereFight();
-	
+	int getPosition();
+
 	string getName();
 
 private:

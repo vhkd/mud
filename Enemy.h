@@ -65,7 +65,7 @@ class Enemy_Boss :public Enemy { //大怪
 public:
 	Enemy_Boss();
 	Enemy_Boss(int type);
-	~Enemy_Boss();
+	~Enemy_Boss() {};
 
 };
 

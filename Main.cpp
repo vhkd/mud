@@ -96,8 +96,7 @@ int main()
 
 		Bag bags;
 
-		Map map;//世界地图
-		//Map_Separate map[9] = { 1,2,3,4,5,6,7,8,9 };//小地图
+		Map map;
 
 		playGame();
 
@@ -108,16 +107,33 @@ int main()
 		int choice;
 		cin >> choice;
 		if (choice == 1) {
-
+			if (map.isThereChat()) {
+				//交谈
+			}
+			else {
+				cout << "这里没人可以交谈" << endl;
+			}
 		}
 		else if (choice == 2) {
-
+			if (map.isThereFight()) {
+				//Enemy_Boss  boss(map.getPosition());
+				//Fight fight(player, boss);
+				//while (fight.isFightEnd()) 
+				//{
+				//	fight.fightRound();
+				//}
+				//fight.endFight();
+			}
+			else
+			{
+				cout << "这里没有战斗可以发生" << endl;
+			}
 		}
 		else if (choice == 3) {
 			while (true)
 			{
 				map.ShowMap();
-				cout << "使用WASD来移动 按1进入地图" << endl;
+				cout << "使用w a s d来移动 按1进入地图" << endl;
 				char order;
 				cin >> order;
 				if (order == '1') break;

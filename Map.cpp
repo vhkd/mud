@@ -1,11 +1,23 @@
 ﻿#include <iostream>
 #include "Map.h"
+#include "Enemy.h"
 
 using namespace std;
 
 Map::Map()
 {
-	Map(0);
+	position = 0;
+	dx = 5;
+	dy = 2;
+
+	for (int i = 0; i < 6; i++)
+	{
+		for (int j = 0; j < 6; j++)
+		{
+			pos[i][j] = ' ';
+		}
+	}
+	pos[dx][dy] = '*';
 }
 
 Map::Map(int p)
@@ -23,7 +35,7 @@ Map::Map(int p)
 		dy = 2;
 		break;
 	}
-	case'2' {
+	case'2':{
 		dx = 3;
 		dy = 2;
 		break;
@@ -82,10 +94,6 @@ Map::~Map()
 }
 
 void Map::Store()
-{
-}
-
-void Map::Story(int mapNum)
 {
 }
 
@@ -198,6 +206,25 @@ void Map::Move(char order)
 			break;
 	}
 	pos[dx][dy] = '*';
+}
+
+bool Map::isThereChat()
+{
+	if (position == 0 || position == 2 || position == 8 )
+		return true;
+	else return false;
+}
+
+bool Map::isThereFight()
+{
+	if (position == 1 || position == 3 || position == 4 || position == 5 || position == 6 || position == 7 || position == 9)
+		return true;
+	else return false;
+}
+
+int Map::getPosition()
+{
+	return position;
 }
 
 string Map::getName()

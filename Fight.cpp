@@ -5,6 +5,10 @@
 
 using namespace std;
 
+Fight::~Fight()
+{
+}
+
 //每回合战斗
 bool Fight::fightRound() {
 	cout << "请选择：1，普通攻击 2，使用技能 3，逃跑" << endl;

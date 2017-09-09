@@ -115,7 +115,7 @@ Enemy_Small::Enemy_Small() {  //小怪统一血量和攻击？
 Enemy_Boss::Enemy_Boss(int whatType) {
 	setType(whatType);
 	switch (whatType) {
-	case '1': {
+	case 1: {
 		name = "暗影黑狼";
 		type = 0;
 		health = 150;
@@ -130,7 +130,7 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		money = 30;		//打死该怪物得到的金钱
 		break;
 	}
-	case '2': {
+	case 2: {
 		name = "史诗绯红印记树怪";
 		type = 2;
 		health = 250;
@@ -145,7 +145,7 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		money = 50;		//打死该怪物得到的金钱
 		break;
 	}
-	case '3': {
+	case 3: {
 		name = "史诗苍老雕文魔像";
 		type = 3;
 		health = 250;
@@ -160,7 +160,7 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		money = 50;		//打死该怪物得到的金钱
 		break;
 	}
-	case '4': {
+	case 4: {
 		name = "传说级远古石甲虫";
 		type = 4;
 		health = 200;
@@ -176,7 +176,7 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		break;
 	}
 
-	case '5': {
+	case 5: {
 		name = "传说级深红锋啄鸟";
 		type = 5;
 		health = 200;
@@ -191,7 +191,7 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		money = 40;		//打死该怪物得到的金钱
 		break;
 	}
-	case '6': {
+	case 6: {
 		name = "传说级魔沼蛙";
 		type = 6;
 		health = 200;
@@ -206,7 +206,7 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		money = 40;		//打死该怪物得到的金钱
 		break;
 	}
-	case '7': {
+	case 7: {
 		name = "炼狱巨龙";
 		type = 7;
 		health = 500;
@@ -221,7 +221,7 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		money = 110;		//打死该怪物得到的金钱
 		break;
 	}
-	case '8': {
+	case 8: {
 		name = "最强霸龙纳什男爵";
 		type = 8;
 		health = 800;
