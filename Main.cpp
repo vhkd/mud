@@ -9,11 +9,13 @@
 #include "Role.h"
 #include "Skill.h"
 #include "Store.h"
-
+#include"Save.h"
+#include"Read.h"
 
 using namespace std;
 
 //强制界面全屏
+/*
 void FullScreen() {
 	HWND hwnd = GetForegroundWindow();
 	int x = GetSystemMetrics(SM_CXSCREEN);
@@ -25,7 +27,7 @@ void FullScreen() {
 	MoveWindow(hwnd, 0, 0, x, y, 1);
 	printf("\n\n");
 }
-
+*/
 int welcomePage()
 {
 	HANDLE hConsole;
@@ -78,9 +80,8 @@ int playGame()
 	return 0;
 }
 
-int main()
-{
-	FullScreen();
+int main(){
+	//FullScreen();
 	welcomePage();
 	int choice;
 	cin >> choice;
@@ -101,6 +102,8 @@ int main()
 		playGame();
 
 	menu:
+
+
 		cout << "位于 :" << map.getName() << endl;
 		player.showRole();
 		cout << endl << "1.交谈 2.战斗 3.移动 4.状态" << endl;
@@ -116,13 +119,15 @@ int main()
 		}
 		else if (choice == 2) {
 			if (map.isThereFight()) {
-				//Enemy_Boss  boss(map.getPosition());
-				//Fight fight(player, boss);
-				//while (fight.isFightEnd()) 
-				//{
-				//	fight.fightRound();
-				//}
-				//fight.endFight();
+				Enemy_Boss  boss(map.getPosition());
+				boss.showEnemy();
+				Fight fight(player, boss);
+				system("cls");
+				while (!fight.isFightEnd()) {
+					fight.fightRound();
+				}
+				player = fight.endFight();		//战斗正常结束，获得增益
+				boss.setDeathNum();
 			}
 			else
 			{
@@ -138,10 +143,12 @@ int main()
 				cin >> order;
 				if (order == '1') break;
 				else map.Move(order);
+
 			}
+
 		}
 		else if (choice == 4) {
-			cout << "1.属性 2.背包 3.技能 4.返回";
+			cout << "1.属性 2.背包 3.技能 4.返回"<<endl;
 			int choice;
 			cin >> choice;
 			if (choice == 1) player.showRole();
@@ -153,14 +160,18 @@ int main()
 		goto menu;
 
 	}
-	else if (choice == 2)
-	{
+	else if (choice == 2){
 		//读取存档
+		/*
+		Read readFile(0);
+		Role player = readFile.getRole();
+		if (player.getType() == 0)
+			cout << "请重新选择。" << endl;
+			*/
+
 	}
-	else if(choice == 3)
-	{
+	else if(choice == 3){
 		exit(0);
 	}
-
 	//cout << "test" << endl;
 }

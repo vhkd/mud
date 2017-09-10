@@ -3,13 +3,9 @@
 
 using namespace std;
 
-Enemy::Enemy()
-{
-}
+Enemy::Enemy(){}
 
-Enemy::~Enemy()
-{
-}
+Enemy::~Enemy(){}
 
 string Enemy::getName() {
 	return name;
@@ -27,74 +23,81 @@ int Enemy::getHealth_max() {
 	return health;
 }
 
-int Enemy::setHealth_max(int hp_m) {
+void Enemy::setHealth_max(int hp_m) {
 	health_max = hp_m;
-	return 0;
+
 }
 
 int Enemy::getHealth() {
 	return health;
 }
 
-int Enemy::setHealth(int hp) {
+void Enemy::setHealth(int hp) {
 	health = hp;
-	return 0;
+
 }
 
 int Enemy::getMagic_max() {
 	return magic_max;
 }
 
-int Enemy::setMagic_max(int mp_m) {
+void Enemy::setMagic_max(int mp_m) {
 	magic_max = mp_m;
-	return 0;
+
 }
 
 int Enemy::getMagic() {
 	return magic;
 }
 
-int Enemy::setMagic(int mp) {
+void Enemy::setMagic(int mp) {
 	magic = mp;
-	return 0;
+
 }
 
 int Enemy::getAttack() {
 	return attack;
 }
 
-int Enemy::setAttack(int a) {
+void Enemy::setAttack(int a) {
 	attack = a;
-	return 0;
+
 }
 
 int Enemy::getDefend() {
 	return defend;
 }
 
-int Enemy::setDefend(int d) {
+void Enemy::setDefend(int d) {
 	defend = d;
-	return 0;
 }
 
-int Enemy::getGoodsId()
-{
+int Enemy::getDeathNum() {
+	return deathNum;
+}
+
+void Enemy::setDeathNum() {
+	deathNum++;
+}
+
+int Enemy::getGoodsId(){
 	return goodsId;
 }
 
-int Enemy::getExp()
-{
+int Enemy::getGoodsNum() {
+	return goodsNum;
+}
+
+int Enemy::getExp(){
 	return exp;
 }
 
-int Enemy::getMoney()
-{
+int Enemy::getMoney(){
 	return money;
 }
 
-double Enemy::useSkill()
-{
-	return 0.0;
+double Enemy::useSkill(){
+	return getAttack() * 1.5;
 }
 
 void Enemy::showEnemy() {
@@ -114,6 +117,7 @@ Enemy_Small::Enemy_Small() {  //小怪统一血量和攻击？
 
 Enemy_Boss::Enemy_Boss(int whatType) {
 	setType(whatType);
+	deathNum = 0;
 	switch (whatType) {
 	case 1: {
 		name = "暗影黑狼";

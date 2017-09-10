@@ -15,24 +15,28 @@ public:
 	int getType();
 
 	int getHealth_max();
-	int setHealth_max(int hp_m);
+	void setHealth_max(int hp_m);
 
 	int getHealth();
-	int setHealth(int hp);
+	void setHealth(int hp);
 
 	int getMagic_max();
-	int setMagic_max(int mp_m);
+	void setMagic_max(int mp_m);
 
 	int getMagic();
-	int setMagic(int mp);
+	void setMagic(int mp);
 
 	int getAttack();
-	int setAttack(int a);
+	void setAttack(int a);
 
 	int getDefend();
-	int setDefend(int d);
+	void setDefend(int d);
+
+	int getDeathNum();		//得到怪物死亡次数
+	void setDeathNum();		//累计怪物死亡次数
 
 	int getGoodsId();		//掉落物品
+	int getGoodsNum();		//掉落物品数量
 	int getExp();			//增加经验
 	int getMoney();			//增加金钱
 
@@ -50,7 +54,9 @@ protected:
 	int attack;
 	int defend;
 
+	int deathNum;	//怪物死亡数次，用来判断
 	int goodsId; //打死怪物会掉落的物品
+	int goodsNum;//打死怪物会掉落的物品数量
 	int exp;  //打死怪物增加的经验
 	int money;  //打死怪物增加的金钱
 };

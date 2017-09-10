@@ -1,12 +1,9 @@
 ﻿#ifndef BAG_H
 #define BAG_H
-
-#include <iostream>  
+ 
 #include <map>  
 #include "Goods.h"
-#include "Role.h"
 
-using namespace std;
 
 class Bag {
 public:
@@ -14,6 +11,7 @@ public:
 	~Bag();
 
 	void showBags();
+	int getGoodsNum();			//得到背包里物品的数量
 	void addGoods(int id, int num);
 	void reduceGoods(int id, int num);
 	

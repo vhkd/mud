@@ -1,7 +1,6 @@
 ﻿#ifndef NPC_H
 #define NPC_H
-
-#include "Role.h"
+#include<string>
 
 class Npc
 {
@@ -10,14 +9,16 @@ public:
 	Npc(int num);
 	~Npc();
 
-	void chat();
-	void getEquip();
-	void getMoney(Role player);
-	bool isChatted();
+	//string getName(int whichNpc);
+	void chat(int whichNpc);
+	int getGoods(int whichNpc);
+	int getMoney(int whichNpc);
+	bool isChatted(int whichNpc);
 	
 private:
-	char name[20];
-	
+	//const string name[6] = { "火行者","木行者","水行者","金行者","土行者","上帝" };
+	const int goodsId[6] = { 1,4,9,12,16,25 };		//6个Npc能给的物品
+	const int money[6] = { 25,34,49,52,66,75 };		//6个Npc能给的金钱
 };
 
 #endif

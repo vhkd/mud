@@ -1,12 +1,10 @@
 ﻿#include "Bag.h"
+#include<iostream>
+using namespace std;
 
-Bag::Bag()
-{
-}
+Bag::Bag(){}
 
-Bag::~Bag()
-{
-}
+Bag::~Bag(){}
 
 void Bag::showBags()
 {
@@ -38,4 +36,8 @@ void Bag::reduceGoods(int id, int num)
 	{
 		bags.erase(id);
 	}
+}
+
+int Bag::getGoodsNum() {  //返回背包里物品的数量
+	return bags.size();
 }

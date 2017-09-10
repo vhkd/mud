@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include "Map.h"
-#include "Enemy.h"
+
 
 using namespace std;
 
@@ -142,6 +142,12 @@ void Map::ShowMap()
 	cout << "您现在的位置为" << mapName[position] << endl;
 }
 
+void Map::showRoom() {
+	if (isThereChat()) {
+		cout << "这里有：";
+	//	cout <<npc.getName(position) <<'\t';
+	}
+}
 
 void Map::Move(char order)
 {
@@ -206,6 +212,7 @@ void Map::Move(char order)
 			break;
 	}
 	pos[dx][dy] = '*';
+	showRoom();
 }
 
 bool Map::isThereChat()

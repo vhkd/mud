@@ -5,12 +5,15 @@
 
 using namespace std;
 
-Fight::~Fight()
-{
+Fight::Fight(Role player, Enemy enemy) :player(player), enemy(enemy) {
+	round = 1;
 }
+Fight::~Fight(){}
 
 //每回合战斗
 bool Fight::fightRound() {
+	
+	showFight();
 	cout << "请选择：1，普通攻击 2，使用技能 3，逃跑" << endl;
 	int choices = 0;
 	while (true) {
@@ -25,14 +28,20 @@ bool Fight::fightRound() {
 		cout << "你对" << enemy.getName() << "造成了" << hurt << "的普通伤害。" << endl;
 		enemy.setHealth(enemy.getHealth() - hurt);
 		enemyFight();		//怪物攻击
-		showFight();
+		
 	}
 	if (choices == 2) {
-		hurt = player.useSkill() * player.getAttack() - enemy.getDefend();
-		cout << enemy.getName() << "造成了" << hurt << "的技能伤害。" << endl;
-		enemy.setHealth(enemy.getHealth() - hurt);
-		enemyFight();  //怪物攻击
-		showFight();
+		if (player.useSkill() == 0) {
+			cout << "请重新选择攻击方式。" << endl<<endl;
+			return false;
+		}
+		else {
+			hurt = player.useSkill() * player.getAttack() - enemy.getDefend();
+			cout << enemy.getName() << "造成了" << hurt << "的技能伤害。" << endl;
+			enemy.setHealth(enemy.getHealth() - hurt);
+			enemyFight();  //怪物攻击
+			
+		}
 	}
 	if (choices == 3) {
 		srand((unsigned)time(NULL));
@@ -45,13 +54,14 @@ bool Fight::fightRound() {
 			return true;	//跳转至战斗逃跑结束，没有获得增益
 		}
 	}
-	return false;				//战斗未逃跑
 	round++;		//回合数加一
+	return false;				//战斗未逃跑
 }
+
 
 //显示战斗的状态
 void Fight::showFight() {
-	//system("cls")
+	
 	player.showRole();
 	cout << endl;
 	enemy.showEnemy();
@@ -66,7 +76,11 @@ void Fight::enemyFight() {
 		player.setHealth(player.getHealth() - hurt);
 		cout << enemy.getName() << "对你造成了" << hurt << "的普通伤害" << endl;
 	}
-	else player.setHealth(player.getHealth() - enemy.useSkill()); //使用技能并造成伤害
+	else {
+		hurt = enemy.useSkill() - player.getDefend();
+		cout << enemy.getName() << "使用技能对你造成了" << hurt << "的技能伤害。";
+		player.setHealth(player.getHealth() - hurt); //使用技能并造成伤害
+	}
 }
 /*
 //使用技能
@@ -85,7 +99,7 @@ bool Fight::isFightEnd() { //判断战斗是否结束
 	}
 	if (enemy.getHealth() <= 0) {
 		cout << enemy.getName() << "已死亡，战斗结束" << endl;
-		endFight();		//跳转到战斗正常结束，获得增益
+		enemy.setDeathNum();
 		return true;
 	}
 	else return false;
@@ -100,18 +114,19 @@ void Fight::GameEnd() {   //不必放在这
 }
 
 //结束战斗
-void Fight::endFight() {  //结束战斗
+Role & Fight::endFight() {  //结束战斗
 	addMoney(enemy.getMoney());
 	addExp(enemy.getExp());
-	addGoods(enemy.getGoodsId());
+	addFightEndGoods(enemy.getGoodsId(),enemy.getGoodsNum());
+	return player;
 }
 
 void Fight::addMoney(int addMoney) { //增加金钱
 	player.setMoney(player.getMoney() + addMoney);
 }
 
-void Fight::addGoods(int addGoodsId) {  //增加物品
-	player.setBag(addGoodsId);		//setBag函数来判断是否能放入
+void Fight::addFightEndGoods(int addGoodsId,int num) {  //增加物品
+	player.setBag(addGoodsId,num);		//setBag函数来判断是否能放入
 }
 
 void Fight::addExp(int addExp) {  //增加经验
