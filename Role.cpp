@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Role::Role(int t){  //1战士2剑客3法师
+Role::Role(int t){  
 	switch (t) {
 	case 0: {
 		type = 0;		//用来判断有没有保存的游戏
@@ -75,10 +75,12 @@ void Role::operator=(Role player) {			//重载=实现深复制
 	level = player.getLevel();
 	defend = player.getDefend();	
 	money = player.getMoney();
-	bag = player.bag;		
+	bags = player.bags;		
 
 	mapId = player.getMapId();		
 	skill = player.skill;		
+
+	story = player.story;
 }
 
 bool Role::showSkill() {    //返回是否有技能释放
@@ -137,6 +139,16 @@ int Role::getMapId() {
 
 void Role::setMapId(int NewMapId) {
 	mapId = NewMapId;
+}
+
+int Role::getStory()
+{
+	return story;
+}
+
+void Role::setStory(int s)
+{
+	story = s;
 }
 
 int Role::getHealth_max() {
@@ -400,30 +412,30 @@ void Role::showRole()
 	cout << "当前人物属性:" << endl;
 	cout << "姓名:" << name << endl;
 	cout << "等级:" << level << endl;
-	cout << "生命值:" << health << "/" << health_max << endl;
-	cout << "魔法值:" << magic << "/" << magic_max << endl;
+	cout << "气血:" << health << "/" << health_max << endl;
+	cout << "内力:" << magic << "/" << magic_max << endl;
 	cout << "攻击:" << attack << endl;
 	cout << "防御:" << defend << endl;
 	cout << "金钱:" << money << endl;
 }
 
 void Role::getBag() {
-	bag.showBags();
+	bags.showBags();
 }
 
 bool Role::setBag(int goodsId, int num) {
-	if (bag.getGoodsNum() > 20) {
+	if (bags.getGoodsNum() > 20) {
 		cout << "背包已满，无法添加。" << endl;
 		return false;
 	}
-	else if (bag.getGoodsNum() + num > 20) {
+	else if (bags.getGoodsNum() + num > 20) {
 		cout << "背包剩余空位不足，无法完全添加。" << endl;
-		cout << "你仅能添加" << bag.getGoodsNum() + num - 20 << "件。" << endl;
-		bag.addGoods(goodsId, bag.getGoodsNum() + num - 20);
+		cout << "你仅能添加" << bags.getGoodsNum() + num - 20 << "件。" << endl;
+		bags.addGoods(goodsId, bags.getGoodsNum() + num - 20);
 		return true;
 	}
 	else {
-		bag.addGoods(goodsId, num);
+		bags.addGoods(goodsId, num);
 		return true;
 	}
 }

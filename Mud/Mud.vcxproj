@@ -152,8 +152,9 @@
     <ClInclude Include="..\Goods.h" />
     <ClInclude Include="..\Map.h" />
     <ClInclude Include="..\Npc.h" />
+    <ClInclude Include="..\Read.h" />
     <ClInclude Include="..\Role.h" />
-    <ClInclude Include="..\Save.hpp" />
+    <ClInclude Include="..\Save.h" />
     <ClInclude Include="..\Skill.h" />
     <ClInclude Include="..\Store.h" />
   </ItemGroup>
@@ -164,7 +165,10 @@
     <ClCompile Include="..\Goods.cpp" />
     <ClCompile Include="..\Main.cpp" />
     <ClCompile Include="..\Map.cpp" />
+    <ClCompile Include="..\Npc.cpp" />
+    <ClCompile Include="..\Read.cpp" />
     <ClCompile Include="..\Role.cpp" />
+    <ClCompile Include="..\Save.cpp" />
     <ClCompile Include="..\Skill.cpp" />
     <ClCompile Include="..\Store.cpp" />
   </ItemGroup>

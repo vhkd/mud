@@ -5,6 +5,10 @@ using namespace std;
 
 Read::Read(int roleType) :player(roleType) {}
 
+Read::~Read()
+{
+}
+
 Role Read::getRole() {			//读取人物属性
 
 	ifstream file;

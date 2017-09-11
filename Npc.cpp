@@ -1,74 +1,143 @@
 ﻿#ifndef NPC_CPP
 #define NPC_CPP
-#include"Npc.h"
-#include<iostream>
+
+#include <iostream>
+#include "Npc.h"
+
 using namespace std;
 
 Npc::Npc() {
 }
-/*
-string Npc::getName(int whichNpc) {
-	return name[whichNpc];
-}
-*/
-void Npc::chat(int whichNpc) {
-	if (whichNpc == 1)
-		cout << "嗨，我是火行者，你可以从我这里得到火灵珠，但是你必须去打败绯红树怪。" << endl;
-	if (whichNpc == 2)
-		cout << "ﾞ嗨，我是木行者，你可以从我这里得到木灵珠，但是你必须去打败苍老魔像。" << endl;
-	if (whichNpc == 3)
-		cout << "嗨，我是水行者，你可以从我这里得到水灵珠，但是你必须去打败深红蜂啄鸟。" << endl;
-	if (whichNpc == 4)
-		cout << "嗨，我是金行者，你可以从我这里得到金灵珠，但是你必须去打败炼狱巨龙。" << endl;
-	if (whichNpc == 5)
-		cout << "嗨，我是土行者，你可以从我这里得到土灵珠，但是你必须去打败霸龙纳什男爵。" << endl;
-	if (whichNpc == 6)
-		cout << "嘿嘿嘿......" << endl;
+Npc::Npc(int num)
+{
+	type = num;
+	switch (num)
+	{
+	case 0: {
+		name = "镇长";
+		goodId = 20;
+		goodNum = 5;
+		money = 20;
+		break;
+	}
+	case 2: {
+		name = "云中子";
+		goodId = 1;
+		goodNum = 1;
+		money = 50;
+		break;
+	}
+	case 4: {
+		name = "广法天尊";
+		goodId = 12;
+		goodNum = 1;
+		money = 100;
+		break;
+	}
+	case 5: {
+		name = "接引道人";
+		goodId = 21;
+		goodNum = 50;
+		money = 200;
+		break;
+	}
+	case 7: {
+		name = "玉鼎真人";
+		goodId = 6;
+		goodNum = 1;
+		money = 2000;
+		break;
+	}
+	case 9: {
+		name = "元始天尊";
+		goodId = 9;
+		goodNum = 1;
+		money = 0;
+		break;
+	}
+
+	default:
+		break;
+	}
 }
 
-int Npc::getGoods(int whichNpc) {
-	if (whichNpc == 1)
-		return goodsId[0];
-	if (whichNpc == 2)
-		return goodsId[1];
-	if (whichNpc == 3)
-		return goodsId[2];
-	if (whichNpc == 4)
-		return goodsId[3];
-	if (whichNpc == 5)
-		return goodsId[4];
-	if (whichNpc == 5)
-		return goodsId[5];
-	return 0;
-}
-int Npc::getMoney(int whichNpc) {
-	if (whichNpc == 1)
-		return money[0];
-	if (whichNpc == 2)
-		return money[1];
-	if (whichNpc == 3)
-		return money[2];
-	if (whichNpc == 4)
-		return money[3];
-	if (whichNpc == 5)
-		return money[4];
-	if (whichNpc == 5)
-		return money[5];
-
-}
-bool Npc::isChatted(int whichNpc) {
-	if (whichNpc == 1)
-		return true;
-	if (whichNpc == 2)
-		return true;
-	if (whichNpc == 3)
-		return true;
-	if (whichNpc == 4)
-		return true;
-	if (whichNpc == 5)
-		return true;
-	if (whichNpc == 5)
-		return false;
+Npc::~Npc()
+{
 }
 
+string Npc::getName() {
+	return name;
+}
+
+void Npc::chat(Role player) {
+	switch (type)
+	{
+	case 0: {
+		if (player.getStory() == 0) {
+			cout << "镇长: 最近镇上不太安宁啊" << endl; 
+			system("pause");
+			cout << "你: 怎么了, 出什么事情了" << endl; 
+			system("pause");
+			cout << "镇长: 最近镇子北面的官道突然出现很多以前没有的野物, 厉害得很, 有些猎户都不是他们的对手, 让镇上的居民人心惶惶" << endl;
+			system("pause");
+			cout << "你: 这些野物这么猖狂? 让我会会它们, 顺便去岳州城里打探一下消息" << endl;
+			system("pause");
+			cout << "镇长: 那你一定要小心啊, 这些金疮药你拿着, 防备野物的伤害" << endl;
+			system("pause");
+
+		}
+		break;
+	}
+	case 2: {
+		if (player.getStory() == 0) {
+			cout << "  " << endl;
+			system("pause");
+		}
+		break;
+	}
+	case 4: {
+		if (player.getStory() == 0) {
+			cout << "  " << endl;
+			system("pause");
+		}
+		break;
+	}
+	case 5: {
+		if (player.getStory() == 0) {
+			cout << "  " << endl;
+			system("pause");
+		}
+		break;
+	}
+	case 7: {
+		if (player.getStory() == 0) {
+			cout << "  " << endl;
+			system("pause");
+		}
+		break;
+	}
+	case 9: {
+		if (player.getStory() == 0) {
+			cout << "  " << endl;
+			system("pause");
+		}
+		break;
+	}
+	default:
+		break;
+	}
+}
+
+int Npc::getGoodNum()
+{
+	return goodNum;
+}
+
+int Npc::getGoodId() {
+	return goodId;
+}
+
+int Npc::getMoney() {
+	return money;
+}
 #endif

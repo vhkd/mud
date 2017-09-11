@@ -18,4 +18,8 @@ Save::Save(Role player) :player(player) {
 	file.close();
 }
 
+Save::~Save()
+{
+}
+
 #endif

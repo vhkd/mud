@@ -105,37 +105,37 @@ void Map::ShowMap()
 	printf("                                  __________\n");
 	printf("                                 |          |\n");
 	printf("                                 |          |\n");
-	printf("                                 |  地图9   |\n");
+	printf("                                 |   昆仑   |\n");
 	printf("                                 |    %c     |\n", pos[0][3]);
 	printf("                                 |          |\n");
 	printf("                                 |__________|\n");
 	printf("                                 |          |\n");
 	printf("                                 |          |\n");
-	printf("                                 |  地图8   |\n");
+	printf("                                 |  十里坡  |\n");
 	printf("                                 |    %c     |\n", pos[1][3]);
 	printf("                                 |          |\n");
 	printf("___________ __________           |__________|\n");
 	printf("|          |          |          |          |\n");
 	printf("|          |          |          |          |\n");
-	printf("|  地图5   |  地图4   |          |  地图7   |\n");
+	printf("|   地宫   |  五龙山  |          |  轩辕庙  |\n");
 	printf("|    %c     |    %c     |          |    %c     |\n", pos[2][0], pos[2][1], pos[2][3]);
 	printf("|          |          |          |          |\n");
 	printf("|__________|__________|__________|__________|\n");
 	printf("           |          |          |          |\n");
 	printf("           |          |          |          |\n");
-	printf("           |  地图3   |  地图2   |  地图6   |\n");
+	printf("           |   西郊   |  岳州城  |   东郊   |\n");
 	printf("           |     %c    |    %c     |    %c     |\n", pos[3][1], pos[3][2], pos[3][3]);
 	printf("           |          |          |          |\n");
 	printf("           |__________|__________|__________|\n");
 	printf("                      |          |\n");
 	printf("                      |          |\n");
-	printf("                      |  地图1   |\n");
+	printf("                      |   官道   |\n");
 	printf("                      |    %c     |\n", pos[4][2]);
 	printf("                      |          |\n");
 	printf("                      |__________|\n");
 	printf("                      |          |\n");
 	printf("                      |          |\n");
-	printf("                      |  地图0   |\n");
+	printf("                      |  平江镇  |\n");
 	printf("                      |    %c     |\n", pos[5][2]);
 	printf("                      |          |\n");
 	printf("                      |__________|\n");
@@ -217,7 +217,7 @@ void Map::Move(char order)
 
 bool Map::isThereChat()
 {
-	if (position == 0 || position == 2 || position == 8 )
+	if (position == 0 || position == 2 || position == 4 || position == 5 || position == 7 || position == 9 )
 		return true;
 	else return false;
 }
