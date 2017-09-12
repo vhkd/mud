@@ -51,14 +51,18 @@ public:
 	int getStory();
 	void setStory(int s);
 
-	void getBag();
-	bool setBag(int goodsId, int num);  //返回是否成功加入背包（背包是否已满）
+	Skill getSkill();
+	Bag getBag();
+	void showBag();//显示背包
+	void addGoodsToBag(int *goodsId, int* num);//加入背包,重载应对两种情况
+	void addGoodsToBag(int goodsId, int num);
+
+	void setBag(Bag bags);  
 
 	void showRole();//人物属性 当前装备
 	bool showSkill();//显示技能,返回是否可以使用技能
 
 	double useSkill();		//使用技能,返回技能的攻击力加成
-	Bag bags;			//背包
 
 private:
 	string name;
@@ -70,14 +74,12 @@ private:
 	int attack;
 	int exp;
 	//每个等级对应的最高经验值，经验值大于等于就升级
-	const int levelExp_Max[29] = { 6,12,18,24,30,36,42,48,54,60,69,78,87,96,105,114,123,132,141,150,162,174,186,198,210,225,240,270,300 };
+	 const int levelExp_Max[29] = { 6,12,18,24,30,36,42,48,54,60,69,78,87,96,105,114,123,132,141,150,162,174,186,198,210,225,240,270,300 };
 	int exp_Max;		//线性经验值，暂定为最高300
 	int level;
 	int defend;			//防御
 	int money;
-
-	//bags改为public成员
-	//Bag bags;			//背包
+	Bag bag;			//背包
 	//int bag[20];
 	int mapId;			//记录玩家当前所在地
 	Skill skill;		//他所拥有的技能

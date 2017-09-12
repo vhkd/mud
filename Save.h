@@ -4,11 +4,11 @@
 
 class Save {
 public:
-	Save(Role player);
+	Save();
 	~Save();
+	static void setToFile(Role player);
 
 private:
-	Role player;
 };
 
 #endif

@@ -2,8 +2,8 @@
 #define MAP_H
 
 #include <string>
-#include <cstdio>
 #include "Enemy.h"
+#include"Role.h"
 #include "Npc.h"
 
 using namespace std;
@@ -22,6 +22,11 @@ public:
 	bool isThereFight();
 	int getPosition();
 
+	string getNpcName();		//得到当前npc名字
+	void setNpc(Npc newNpc);
+	void chatToNpc(Role player);
+	int getNpcGoodsId();
+	int getNpcGoodsNum();
 	string getName();
 
 private:
@@ -32,7 +37,7 @@ private:
 	char pos[6][6];
 	int dx;
 	int dy;
-	//Npc npc;
+	Npc npc;
 };
 
 #endif

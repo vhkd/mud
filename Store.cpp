@@ -20,7 +20,7 @@ Store::~Store()
 
 void Store::showStores()
 {
-	cout << "物品       " << "描述                                   " << "价格" << endl;
+	cout << "物品" << "描述							" << "价格" << endl;
 	map<int, int>::iterator iter;
 	int i = 0;//物品序号
 	for (iter = stores.begin(); iter != stores.end(); ++iter)
@@ -28,12 +28,12 @@ void Store::showStores()
 		cout << i << "." << goods[iter->first].getName() << "   "
 			<< goods[iter->first].getDesc() << "   "
 			<< goods[iter->first].getPriceBuy() << endl;
-		
+
 		++i;//物品序号
 	}
 }
 
-void Store::storeToPlayer(Role player, Bag bags)
+Bag Store::storeToPlayer(Role player, Bag bags)
 {
 	int goodsId, goodsNum;
 	cout << "请输入要购买的物品序号" << endl;
@@ -52,9 +52,10 @@ void Store::storeToPlayer(Role player, Bag bags)
 	{
 		cout << "金钱不足,购买失败" << endl;
 	}
+	return bags;
 }
 
-void Store::playerToStore(Role player, Bag bags)
+Bag Store::playerToStore(Role player, Bag bags)
 {
 	int goodsId, goodsNum;
 	cout << "请输入要卖出的物品序号" << endl;
@@ -66,4 +67,5 @@ void Store::playerToStore(Role player, Bag bags)
 	player.setMoney(player.getMoney() + totalPrice);
 	cout << "出售成功" << endl;
 	cout << "获得金钱:" << totalPrice << endl;
+	return bags;
 }

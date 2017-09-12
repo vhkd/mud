@@ -8,7 +8,7 @@
 class Skill {
 public:
 	Skill();
-	~Skill() {};
+	~Skill();
 	int getLevel(int whatSkill);		//判断技能等级（是否为零尚未习得）对应伤害
 	bool addLevel(int whatSkill);	    //增加技能等级，每次一级
 										//void setLevel(int whatSkill);		//设置技能等级

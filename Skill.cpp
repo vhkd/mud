@@ -16,6 +16,10 @@ Skill::Skill() {
 	skillLevel_Max_4 = 6;
 
 }
+Skill::~Skill()
+{
+	cout << "calling" << endl;
+}
 int Skill::getLevel(int whatSkill) {
 	/*
 	switch (whatSkill) {
@@ -242,9 +246,9 @@ Role_1Skill::Role_1Skill() {
 	skill_4NeedMp = 25;
 
 	skill_1AddAttack = 0.1;
-	skill_1AddAttack = 0.15;
-	skill_1AddAttack = 0;
-	skill_1AddAttack = 0.5;
+	skill_2AddAttack = 0.3;
+	skill_3AddAttack = 0;
+	skill_4AddAttack = 0.5;
 
 	skill_1recoverHp = 10;
 	skill_2recoverHp = 15;
@@ -281,9 +285,9 @@ Role_2Skill::Role_2Skill() {
 	skill_4NeedMp = 25;
 
 	skill_1AddAttack = 0.1;
-	skill_1AddAttack = 0.15;
-	skill_1AddAttack = 0.0;
-	skill_1AddAttack = 0.5;
+	skill_2AddAttack = 0.15;
+	skill_3AddAttack = 0.0;
+	skill_4AddAttack = 0.5;
 
 	skill_1recoverHp = 10;
 	skill_2recoverHp = 15;
@@ -320,9 +324,9 @@ Role_3Skill::Role_3Skill() {
 	skill_4NeedMp = 25;
 
 	skill_1AddAttack = 0.1;
-	skill_1AddAttack = 0.15;
-	skill_1AddAttack = 0;
-	skill_1AddAttack = 0.5;
+	skill_2AddAttack = 0.15;
+	skill_3AddAttack = 0;
+	skill_4AddAttack = 0.5;
 
 	skill_1recoverHp = 10;
 	skill_2recoverHp = 15;

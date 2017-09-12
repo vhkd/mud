@@ -80,11 +80,11 @@ void Enemy::setDeathNum() {
 	deathNum++;
 }
 
-int Enemy::getGoodsId(){
+int* Enemy::getGoodsId(){
 	return goodsId;
 }
 
-int Enemy::getGoodsNum() {
+int* Enemy::getGoodsNum() {
 	return goodsNum;
 }
 
@@ -101,11 +101,11 @@ double Enemy::useSkill(){
 }
 
 void Enemy::showEnemy() {
-	cout << "当前怪物属性:" << endl;
-	cout << "名称:" << name << endl;
-	cout << "生命值:" << health << "/" << health_max << endl;
+	cout << "当前怪物属性:" <<'\t';
+	cout << "名称:" << name << '\t';
+	cout << "生命值:" << health << "/" << health_max << '\t';
 	cout << "魔法值:" << magic << "/" << magic_max << endl;
-	cout << "攻击:" << attack << endl;
+	cout << "攻击:" << attack << '\t';
 	cout << "防御:" << defend << endl;
 }
 
@@ -129,7 +129,15 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		attack = 15;
 		defend = 5;
 
-		goodsId = 0;	//打死该怪物会掉落的物品
+		goodsNum[0] = 2;		//对应每件物品的数量
+		goodsNum[1] = 1;
+		goodsNum[2] = 0;
+		goodsNum[3] = 0;
+		goodsId[0] = 0;	//打死该怪物会掉落的物品
+		goodsId[1] = 1;
+		goodsId[2] = -1;	//空，代表只有以上两件
+		goodsId[3] = -1;
+
 		exp = 25;		//打死该怪物得到的经验
 		money = 30;		//打死该怪物得到的金钱
 		break;
@@ -144,7 +152,15 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		attack = 25;
 		defend = 10;
 
-		goodsId = 1;	//打死该怪物会掉落的物品
+		goodsNum[0] = 2;			//对应每件物品的数量
+		goodsNum[1] = 1;
+		goodsNum[2] = 1;
+		goodsNum[3] = 0;
+		goodsId[0] = 2;	//打死该怪物会掉落的物品
+		goodsId[1] = 3;
+		goodsId[2] = 4;	
+		goodsId[3] = -1;
+
 		exp = 35;		//打死该怪物得到的经验
 		money = 50;		//打死该怪物得到的金钱
 		break;
@@ -159,7 +175,16 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		attack = 25;
 		defend = 10;
 
-		goodsId = 2;	//打死该怪物会掉落的物品
+		goodsNum[0] = 2;			//对应每件物品的数量
+		goodsNum[1] = 2;
+		goodsNum[2] = 1;
+		goodsNum[3] = 0;
+		goodsId[0] = 5;	//打死该怪物会掉落的物品
+		goodsId[1] = 6;
+		goodsId[2] = 7;
+		goodsId[3] = -1;
+		
+
 		exp = 35;		//打死该怪物得到的经验
 		money = 50;		//打死该怪物得到的金钱
 		break;
@@ -174,7 +199,15 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		attack = 20;
 		defend = 8;
 
-		goodsId = 3;	//打死该怪物会掉落的物品
+		goodsNum[0] = 2;			//对应每件物品的数量
+		goodsNum[1] = 2;
+		goodsNum[2] = 1;
+		goodsNum[3] = 0;
+		goodsId[0] = 8;	//打死该怪物会掉落的物品
+		goodsId[1] = 9;
+		goodsId[2] = 10;
+		goodsId[3] = -1;
+
 		exp = 30;		//打死该怪物得到的经验
 		money = 40;		//打死该怪物得到的金钱
 		break;
@@ -190,7 +223,15 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		attack = 20;
 		defend = 8;
 
-		goodsId = 4;	//打死该怪物会掉落的物品
+		goodsNum[0] = 2;			//对应每件物品的数量
+		goodsNum[1] = 3;
+		goodsNum[2] = 2;
+		goodsNum[3] = 0;
+		goodsId[0] = 11;	//打死该怪物会掉落的物品
+		goodsId[1] = 12;
+		goodsId[2] = 13;
+		goodsId[3] = -1;
+		
 		exp = 30;		//打死该怪物得到的经验
 		money = 40;		//打死该怪物得到的金钱
 		break;
@@ -205,7 +246,15 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		attack = 20;
 		defend = 8;
 
-		goodsId = 6;	//打死该怪物会掉落的物品
+		goodsNum[0] = 2;			//对应每件物品的数量
+		goodsNum[1] = 3;
+		goodsNum[2] = 2;
+		goodsNum[3] = 0;
+		goodsId[0] = 14;	//打死该怪物会掉落的物品
+		goodsId[1] = 15;
+		goodsId[2] = 16;
+		goodsId[3] = -1;
+		
 		exp = 30;		//打死该怪物得到的经验
 		money = 40;		//打死该怪物得到的金钱
 		break;
@@ -220,7 +269,15 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		attack = 60;
 		defend = 30;
 
-		goodsId = 7;	//打死该怪物会掉落的物品
+		goodsNum[0] = 2;			//对应每件物品的数量
+		goodsNum[1] = 3;
+		goodsNum[2] = 2;
+		goodsNum[3] = 1;
+		goodsId[0] = 18;	//打死该怪物会掉落的物品
+		goodsId[1] = 19;
+		goodsId[2] = 20;
+		goodsId[3] = 21;
+
 		exp = 60;		//打死该怪物得到的经验
 		money = 110;		//打死该怪物得到的金钱
 		break;
@@ -235,7 +292,16 @@ Enemy_Boss::Enemy_Boss(int whatType) {
 		attack = 100;
 		defend = 50;
 
-		goodsId = 8;	//打死该怪物会掉落的物品
+		goodsNum[0] = 2;			//对应每件物品的数量
+		goodsNum[1] = 3;
+		goodsNum[2] = 2;
+		goodsNum[3] = 1;
+		goodsId[0] = 20;	//打死该怪物会掉落的物品
+		goodsId[1] = 21;
+		goodsId[2] = 22;
+		goodsId[3] = 23;
+
+		
 		exp = 100;		//打死该怪物得到的经验
 		money = 500;		//打死该怪物得到的金钱
 		break;
@@ -260,7 +326,8 @@ goodsId = 0;	//打死该怪物会掉落的物品
 exp = 25;		//打死该怪物得到的经验
 money = 30;		//打死该怪物得到的金钱
 }
-*/
+
+
 double Enemy_1::useSkill() {
 	if (getMagic() < 20) {
 		cout << getName() << "无法发动技能，没有对你造成伤害。" << endl;
@@ -289,7 +356,7 @@ goodsId = 1;	//打死该怪物会掉落的物品
 exp = 35;		//打死该怪物得到的经验
 money = 50;		//打死该怪物得到的金钱
 }
-*/
+
 
 double Enemy_2::useSkill() {
 	if (getMagic() < 30) {
@@ -317,7 +384,7 @@ goodsId = 2;	//打死该怪物会掉落的物品
 exp = 35;		//打死该怪物得到的经验
 money = 50;		//打死该怪物得到的金钱
 }
-*/
+
 
 double Enemy_3::useSkill() {
 	if (getMagic() < 30) {
@@ -346,7 +413,7 @@ goodsId = 3;	//打死该怪物会掉落的物品
 exp = 30;		//打死该怪物得到的经验
 money = 40;		//打死该怪物得到的金钱
 }
-*/
+
 
 double Enemy_4::useSkill() {
 	if (getMagic() < 30) {
@@ -376,7 +443,7 @@ exp = 30;		//打死该怪物得到的经验
 money = 40;		//打死该怪物得到的金钱
 }
 
-*/
+
 double Enemy_5::useSkill() {
 	if (getMagic() < 30) {
 		cout << getName() << "无法发动技能，没有对你造成伤害。" << endl;
@@ -404,7 +471,7 @@ goodsId = 6;	//打死该怪物会掉落的物品
 exp = 30;		//打死该怪物得到的经验
 money = 40;		//打死该怪物得到的金钱
 }
-*/
+
 
 double Enemy_6::useSkill() {
 	if (getMagic() < 30) {
@@ -433,7 +500,7 @@ goodsId = 7;	//打死该怪物会掉落的物品
 exp = 60;		//打死该怪物得到的经验
 money = 110;		//打死该怪物得到的金钱
 }
-*/
+
 
 double Enemy_7::useSkill() {
 	if (getMagic() < 80) {
@@ -462,7 +529,7 @@ Enemy_8::Enemy_8() {
 	exp = 100;		//打死该怪物得到的经验
 	money = 500;		//打死该怪物得到的金钱
 }
-*/
+
 
 double Enemy_8::useSkill() {
 	if (getMagic() < 120) {
@@ -473,3 +540,4 @@ double Enemy_8::useSkill() {
 	cout << getName() << "使用技能，对你造成" << getAttack()*2.2 << "的伤害" << endl;
 	return getAttack()*2.2;
 }
+*/

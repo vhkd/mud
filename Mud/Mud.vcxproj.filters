@@ -42,9 +42,6 @@
     <ClInclude Include="..\Store.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Read.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Save.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -77,13 +74,10 @@
     <ClCompile Include="..\Main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Npc.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Read.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\Save.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Npc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

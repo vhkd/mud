@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include<fstream>
 #include <Windows.h>
 #include "Bag.h"
 #include "Enemy.h"
@@ -9,8 +10,7 @@
 #include "Role.h"
 #include "Skill.h"
 #include "Store.h"
-#include "Save.h"
-#include "Read.h"
+#include"Save.h"
 
 using namespace std;
 
@@ -57,7 +57,7 @@ int welcomePage()
 	return 0;
 }
 
-int playGame()
+int backgroundGame()
 {
 	HANDLE hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -80,139 +80,164 @@ int playGame()
 	system("pause");
 	system("cls");
 
+
 	return 0;
+}
+
+void newGame(Role player) {
+
+	Goods goods[24] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 };
+	//Bag bags;
+	Map map;
+	Store store;
+menu:
+
+	cout << "位于 :" << map.getName() << endl;
+	map.showRoom();
+	if (map.isThereFight()) {
+		Enemy_Boss  boss(map.getPosition());
+		cout << "这里有：" << '\t' << boss.getName()<<endl;
+	}
+	player.showRole();											//显示人物信息
+	cout << endl << "1.交谈 2.战斗 3.移动 4.状态 5.商店 6.退出 7.保存并退出" << endl;
+	int choice;
+	cin >> choice;
+	if (choice == 1) {
+		if (map.isThereChat()) {
+			//交谈
+			Npc npc(map.getPosition());
+			map.setNpc(npc);
+			cout << endl << "可以对话的人物:" << endl ;
+			cout << map.getNpcName() << endl;
+			map.chatToNpc(player);
+			player.setStory(player.getStory() + 1);
+			player.addGoodsToBag(map.getNpcGoodsId(), map.getNpcGoodsNum());
+			cout << endl << "获得物品:" << goods[map.getNpcGoodsId()].getName() << " * " << map.getNpcGoodsNum() << endl << endl;
+			
+		}
+		else cout << "这里没人可以交谈" << endl;
+
+	}
+	else if (choice == 2) {
+		if (map.isThereFight()) {
+			Enemy_Boss  boss(map.getPosition());
+			boss.showEnemy();
+			Fight fight(player, boss);
+			system("cls");
+			while (!fight.isFightEnd()) {
+				fight.fightRound();
+			}
+			player = fight.endFight();		//战斗正常结束，获得增益
+			boss.setDeathNum();
+		}
+		else
+		{
+			cout << "这里没有战斗可以发生" << endl;
+		}
+	}
+	else if (choice == 3) {
+		while (true)
+		{
+			map.ShowMap();
+			cout << "使用w a s d来移动 按1进入地图" << endl;
+			char order;
+			cin >> order;
+			if (order == '1') {
+				player.setMapId(map.getPosition());
+				system("cls");
+				break;
+			}
+			else map.Move(order);
+
+		}
+
+	}
+	else if (choice == 4) {
+		cout << "1.属性 2.背包 3.技能 4.返回" << endl;
+		int choice;
+		cin >> choice;
+		if (choice == 2) player.showBag();		//显示背包
+		else if (choice == 3) player.showSkill();//显示技能
+		else if (choice == 4 || choice == 1) goto menu;		//这里跳转到menu开头那里显示人物信息
+	}
+	else if (choice == 5) {
+		cout << "1.购买物品		2.售出物品		3.退出" << endl;
+		int choiceStore;
+		cin >> choiceStore;
+		if (choiceStore == 1) {
+			store.showStores();
+			player.setBag(store.storeToPlayer(player,player.getBag()));
+		}
+		if (choiceStore == 2) {
+			player.showBag();
+			player.setBag(store.playerToStore(player, player.getBag()));
+		}
+		if (choiceStore == 3)
+			goto menu;
+	}
+
+	else if (choice == 6)
+		exit(0);
+	else if (choice == 7) {
+		Save::setToFile(player);
+		exit(0);
+	}
+	goto menu;
+
+}
+
+void readFile() {
+	//读取存档
+		
+	Role player(0);
+	ifstream file("Save.dat", ios_base::in | ios_base::binary);
+	if (!file) {
+		cout << "没有保存的游戏！" << endl;
+		cout << "请重新选择:" << endl;
+
+	}
+	else if (file.read(reinterpret_cast<char *>(&player), sizeof(player))) {
+		cout << "读入成功！" << endl;
+
+		//player.showBag();		//这里出问题，因为背包是用的容器，重新读取后，地址冲突，暂时没想到好的解决办法
+		newGame(player);
+	}
+	else {
+		cout << "读入失败！" << endl;
+	}
+	file.close();
+	exit(0);
 }
 
 int main(){
 	//FullScreen();
 	welcomePage();
 	int choice;
-	cin >> choice;
-	if(choice == 1) {
-		playGame();
-
-		//人物创建
-		int choiceRole;
-		system("cls");
-		cout << "职业简介: " << endl << 
-				"1.人道" << endl << "认为“道”是宇宙万物的本原和主宰，无所不在，无所不包，万物都是从“道”演化而来的。"<< endl <<
-				"2.阐教" << endl << "阐者，明也。阐教主张崇尚自然，提倡道法自然，无所不容，自然无为，与自然和谐相处。" << endl << 
-				"3.截教" << endl << "主张上道无德，下道唯德。大道五十衍四十九为定数，一线生机遁去，截教的教义正是截取这一线生机，演变六道。" << endl;
-		cout << endl << "请输入要创建的职业" << endl;
-		cin >> choiceRole;
-		Role player(choiceRole);
-		system("cls");
-		cout << "创建成功" << endl;
-		player.showRole();
-
-
-		Goods goods[24] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 };
-
-		Map map;
-
-
-	menu:
-
-
-		cout << "位于 :" << map.getName() << endl;
-		player.showRole();
-		cout << endl << "1.交谈 2.战斗 3.移动 4.状态 5.存档并退出" << endl;
-		int choice;
+	while (true) {
 		cin >> choice;
-		if (choice == 1) {
-			if (map.isThereChat()) {
-				Npc npc(map.getPosition());
-				cout << endl << "请输入要对话的人物:" << endl << "1.商店" << endl;
-				cout << "2." << npc.getName() << endl;
-				int order;
-				cin >> order;
-				if (order == 1) {
-					Store store;
-					int order;
-					cout << "1. 购买物品 2.卖出物品" << endl;
-					cin >> order;
-					if (order == 1) {
-						store.showStores();
-						store.storeToPlayer(player, player.bags);
-					}
-					else if (order == 2)
-					{
-						player.bags.showBags();
-						store.playerToStore(player, player.bags);
-					}
-				}
-				else if (order == 2) {
-					npc.chat(player);
-					player.setStory(player.getStory() + 1);
-					player.bags.addGoods(npc.getGoodId(), npc.getGoodNum());
-					cout << endl << "获得物品:" << goods[npc.getGoodId()].getName() << " * " << npc.getGoodNum() << endl <<endl;
-				}
-			}
-			else {
-				cout << "这里没人可以交谈" << endl;
-			}
-		}
-		else if (choice == 2) {
-			if (map.isThereFight()) {
-				Enemy_Boss  boss(map.getPosition());
-				boss.showEnemy();
-				Fight fight(player, boss);
-				system("cls");
-				while (!fight.isFightEnd()) {
-					fight.fightRound();
-				}
-				player = fight.endFight();		//战斗正常结束，获得增益
-				boss.setDeathNum();
-			}
-			else
-			{
-				cout << "这里没有战斗可以发生" << endl;
-			}
-		}
-		else if (choice == 3) {
-			while (true)
-			{
-				map.ShowMap();
-				cout << "使用w a s d来移动 按1进入地图" << endl;
-				char order;
-				cin >> order;
-				if (order == '1') break;
-				else map.Move(order);
-
-			}
-
-		}
-		else if (choice == 4) {
-			cout << "1.属性 2.背包 3.技能 4.返回"<<endl;
-			int choice;
-			cin >> choice;
-			if (choice == 1) player.showRole();
-			else if (choice == 2) player.bags.showBags();
-			else if (choice == 3) player.showSkill();//显示技能
-			else if (choice == 4) goto menu;
-		}
-		else if (choice == 5) {
-			Save save(player);
+		if (choice == 3)
 			exit(0);
+		//人物创建
+		if (choice == 1) {
+			backgroundGame();
+			int choiceRole;
+			cout << "职业简介: " << endl <<
+				"1.人道" << endl << "认为“道”是宇宙万物的本原和主宰，无所不在，无所不包，万物都是从“道”演化而来的。" << endl <<
+				"2.阐教" << endl << "阐者，明也。阐教主张崇尚自然，提倡道法自然，无所不容，自然无为，与自然和谐相处。" << endl <<
+				"3.截教" << endl << "主张上道无德，下道唯德。大道五十衍四十九为定数，一线生机遁去，截教的教义正是截取这一线生机，演变六道。" << endl;
+			cout << endl << "请输入要创建的职业" << endl;
+			cin >> choiceRole;
+			Role player(choiceRole);
+			system("cls");
+			cout << "创建成功" << endl;
+			newGame(player);
 		}
-		goto menu;
-
+		if (choice == 2) {
+			readFile();
+		}
 	}
-	else if (choice == 2){
-		//读取存档
-		
-		Read readFile(0);
-		Role player = readFile.getRole();
-		if (player.getType() == 0)
-			cout << "请重新选择。" << endl;
-		
-		Goods goods[24] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 };
-
-		Map map;
-
-	}
-	else if(choice == 3){
-		exit(0);
-	}
-	//cout << "test" << endl;
+	return 0;
 }
+
+
+

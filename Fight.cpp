@@ -27,11 +27,12 @@ bool Fight::fightRound() {
 		hurt = player.getAttack() - enemy.getDefend();
 		cout << "你对" << enemy.getName() << "造成了" << hurt << "的普通伤害。" << endl;
 		enemy.setHealth(enemy.getHealth() - hurt);
-		enemyFight();		//怪物攻击
+		if(isFightEnd() == false)
+			enemyFight();		//怪物攻击
 		
 	}
 	if (choices == 2) {
-		if (player.useSkill() == 0) {
+		if (player.showSkill()== false) {
 			cout << "请重新选择攻击方式。" << endl<<endl;
 			return false;
 		}
@@ -39,7 +40,8 @@ bool Fight::fightRound() {
 			hurt = player.useSkill() * player.getAttack() - enemy.getDefend();
 			cout << enemy.getName() << "造成了" << hurt << "的技能伤害。" << endl;
 			enemy.setHealth(enemy.getHealth() - hurt);
-			enemyFight();  //怪物攻击
+			if (isFightEnd() == false)
+				enemyFight();  //怪物攻击
 			
 		}
 	}
@@ -78,7 +80,7 @@ void Fight::enemyFight() {
 	}
 	else {
 		hurt = enemy.useSkill() - player.getDefend();
-		cout << enemy.getName() << "使用技能对你造成了" << hurt << "的技能伤害。";
+		cout << enemy.getName() << "使用技能对你造成了" << hurt << "的技能伤害。"<<endl;
 		player.setHealth(player.getHealth() - hurt); //使用技能并造成伤害
 	}
 }
@@ -94,11 +96,9 @@ cout<<enemy.getName()<<"对你造成了"<<##<<"的技能伤害"<<endl;
 //判断战斗的结束
 bool Fight::isFightEnd() { //判断战斗是否结束
 	if (player.getHealth() <= 0) {
-		cout << "你已死亡，游戏结束。" << endl;
 		GameEnd();		//跳转到程序结束
 	}
 	if (enemy.getHealth() <= 0) {
-		cout << enemy.getName() << "已死亡，战斗结束" << endl;
 		enemy.setDeathNum();
 		return true;
 	}
@@ -107,6 +107,7 @@ bool Fight::isFightEnd() { //判断战斗是否结束
 
 //游戏结束
 void Fight::GameEnd() {   //不必放在这
+	cout << "你已死亡，游戏结束。" << endl;
 	cout << "人在江湖，身不由己，少侠，不要气馁，重新来过。" << endl;
 
 //	......;//结束游戏或者......你懂的
@@ -115,6 +116,7 @@ void Fight::GameEnd() {   //不必放在这
 
 //结束战斗
 Role & Fight::endFight() {  //结束战斗
+	cout << enemy.getName() << "已死亡，战斗结束" << endl;
 	addMoney(enemy.getMoney());
 	addExp(enemy.getExp());
 	addFightEndGoods(enemy.getGoodsId(),enemy.getGoodsNum());
@@ -125,8 +127,8 @@ void Fight::addMoney(int addMoney) { //增加金钱
 	player.setMoney(player.getMoney() + addMoney);
 }
 
-void Fight::addFightEndGoods(int addGoodsId,int num) {  //增加物品
-	player.setBag(addGoodsId,num);		//setBag函数来判断是否能放入
+void Fight::addFightEndGoods(int* addGoodsId,int* num) {  //增加物品
+	player.addGoodsToBag(addGoodsId,num);		//addGoodsToBag函数来判断是否能放入
 }
 
 void Fight::addExp(int addExp) {  //增加经验

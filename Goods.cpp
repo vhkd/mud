@@ -275,8 +275,7 @@ Goods::~Goods()
 
 
 
-string Goods::getName()
-{
+string Goods::getName(){
 	return string(name);
 }
 

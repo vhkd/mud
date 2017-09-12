@@ -5,21 +5,18 @@
 #include<iostream>
 using namespace std;
 
-Save::Save(Role player) :player(player) {
-	ofstream file;
-	file.open("Save.dat");
+void Save::setToFile(Role player) {
+	ofstream file("Save.dat", ios_base::binary);
 	if (!file) {
 		cout << "无法打开保存文件！" << endl;
-		return;
+		cout << "保存失败！" << endl;
 	}
-	else if (file.write(reinterpret_cast<char *>(&player), sizeof(Role)))
+	else if (file.write(reinterpret_cast<char *>(&player), sizeof(player)))
 		cout << "保存成功！" << endl;
 	else cout << "未能保存！" << endl;
 	file.close();
 }
 
-Save::~Save()
-{
-}
-
 #endif
+
+

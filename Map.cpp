@@ -4,8 +4,7 @@
 
 using namespace std;
 
-Map::Map()
-{
+Map::Map():npc(0){
 	position = 0;
 	dx = 5;
 	dy = 2;
@@ -20,8 +19,7 @@ Map::Map()
 	pos[dx][dy] = '*';
 }
 
-Map::Map(int p)
-{
+Map::Map(int p) :npc(p) {
 	position = p;
 	switch (p)
 	{
@@ -102,51 +100,50 @@ void Map::ShowMap()
 {
 	system("cls");
 	cout << "世界地图:" << endl;
-	printf("                                  __________\n");
-	printf("                                 |          |\n");
-	printf("                                 |          |\n");
-	printf("                                 |   昆仑   |\n");
-	printf("                                 |    %c     |\n", pos[0][3]);
-	printf("                                 |          |\n");
-	printf("                                 |__________|\n");
-	printf("                                 |          |\n");
-	printf("                                 |          |\n");
-	printf("                                 |  十里坡  |\n");
-	printf("                                 |    %c     |\n", pos[1][3]);
-	printf("                                 |          |\n");
-	printf("___________ __________           |__________|\n");
-	printf("|          |          |          |          |\n");
-	printf("|          |          |          |          |\n");
-	printf("|   地宫   |  五龙山  |          |  轩辕庙  |\n");
-	printf("|    %c     |    %c     |          |    %c     |\n", pos[2][0], pos[2][1], pos[2][3]);
-	printf("|          |          |          |          |\n");
-	printf("|__________|__________|__________|__________|\n");
-	printf("           |          |          |          |\n");
-	printf("           |          |          |          |\n");
-	printf("           |   西郊   |  岳州城  |   东郊   |\n");
-	printf("           |     %c    |    %c     |    %c     |\n", pos[3][1], pos[3][2], pos[3][3]);
-	printf("           |          |          |          |\n");
-	printf("           |__________|__________|__________|\n");
-	printf("                      |          |\n");
-	printf("                      |          |\n");
-	printf("                      |   官道   |\n");
-	printf("                      |    %c     |\n", pos[4][2]);
-	printf("                      |          |\n");
-	printf("                      |__________|\n");
-	printf("                      |          |\n");
-	printf("                      |          |\n");
-	printf("                      |  平江镇  |\n");
-	printf("                      |    %c     |\n", pos[5][2]);
-	printf("                      |          |\n");
-	printf("                      |__________|\n");
+	cout<<"                                  __________"<<endl;
+	cout<<"                                 |          |"<<endl;
+	cout<<"                                 |          |"<<endl;
+	cout<<"                                 |   昆仑   |"<<endl;
+	cout<<"                                 |    "<<pos[0][3]<<"     |"<<endl;
+	cout<<"                                 |          |"<<endl;
+	cout<<"                                 |__________|"<<endl;
+	cout<<"                                 |          |"<<endl;
+	cout<<"                                 |          |"<<endl;
+	cout<<"                                 |  十里坡  |"<<endl;
+	cout<<"                                 |    "<<pos[1][3]<<"     |"<<endl;
+	cout<<"                                 |          |"<<endl;
+	cout<<"___________ __________           |__________|"<<endl;
+	cout<<"|          |          |          |          |"<<endl;
+	cout<<"|          |          |          |          |"<<endl;
+	cout<<"|   地宫   |  五龙山  |          |  轩辕庙  |"<<endl;
+	cout<<"|    "<< pos[2][0] <<"     |    "<< pos[2][1] <<"     |          |    "<< pos[2][3] <<"     |"<<endl;
+	cout<<"|          |          |          |          |"<<endl;
+	cout<<"|__________|__________|__________|__________|"<<endl;
+	cout<<"           |          |          |          |"<<endl;
+	cout<<"           |          |          |          |"<<endl;
+	cout<<"           |   西郊   |  岳州城  |   东郊   |"<<endl;
+	cout<<"           |     "<< pos[3][1] <<"    |    "<< pos[3][2] <<"     |    "<< pos[3][3] <<"     |"<<endl;
+	cout<<"           |          |          |          |"<<endl;
+	cout<<"           |__________|__________|__________|"<<endl;
+	cout<<"                      |          |"<<endl;
+	cout<<"                      |          |"<<endl;
+	cout<<"                      |   官道   |"<<endl;
+	cout<<"                      |    "<< pos[4][2] <<"     |"<<endl;
+	cout<<"                      |          |"<<endl;
+	cout<<"                      |__________|"<<endl;
+	cout<<"                      |          |"<<endl;
+	cout<<"                      |          |"<<endl;
+	cout<<"                      |  平江镇  |"<<endl;
+	cout<<"                      |    "<< pos[5][2] <<"     |"<<endl;
+	cout<<"                      |          |"<<endl;
+	cout<<"                      |__________|"<<endl;
 	cout << "您现在的位置为" << mapName[position] << endl;
 }
 
+
 void Map::showRoom() {
-	if (isThereChat()) {
-		cout << "这里有：";
-	//	cout <<npc.getName(position) <<'\t';
-	}
+	if (isThereChat()) 
+		cout << "这里有：" << '\t'<<npc.getName() << '\t';
 }
 
 void Map::Move(char order)
@@ -217,7 +214,7 @@ void Map::Move(char order)
 
 bool Map::isThereChat()
 {
-	if (position == 0 || position == 2 || position == 4 || position == 5 || position == 7 || position == 9 )
+	if (position == 0 || position == 2 || position == 4 || position == 5 || position == 7 || position == 9)
 		return true;
 	else return false;
 }
@@ -232,6 +229,26 @@ bool Map::isThereFight()
 int Map::getPosition()
 {
 	return position;
+}
+
+string Map::getNpcName(){
+	return npc.getName();
+}
+
+void Map::setNpc(Npc newNpc) {
+	npc = newNpc;
+}
+
+void Map::chatToNpc(Role player){
+	npc.chat(player);
+}
+
+int Map::getNpcGoodsId(){
+	return npc.getGoodId();
+}
+
+int Map::getNpcGoodsNum(){
+	return npc.getGoodNum();
 }
 
 string Map::getName()

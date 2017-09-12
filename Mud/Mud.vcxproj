@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -152,7 +152,6 @@
     <ClInclude Include="..\Goods.h" />
     <ClInclude Include="..\Map.h" />
     <ClInclude Include="..\Npc.h" />
-    <ClInclude Include="..\Read.h" />
     <ClInclude Include="..\Role.h" />
     <ClInclude Include="..\Save.h" />
     <ClInclude Include="..\Skill.h" />
@@ -166,7 +165,6 @@
     <ClCompile Include="..\Main.cpp" />
     <ClCompile Include="..\Map.cpp" />
     <ClCompile Include="..\Npc.cpp" />
-    <ClCompile Include="..\Read.cpp" />
     <ClCompile Include="..\Role.cpp" />
     <ClCompile Include="..\Save.cpp" />
     <ClCompile Include="..\Skill.cpp" />

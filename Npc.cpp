@@ -1,15 +1,16 @@
-﻿#ifndef NPC_CPP
-#define NPC_CPP
-
-#include <iostream>
-#include "Npc.h"
-
+﻿
+#include"Npc.h"
+#include<iostream>
 using namespace std;
 
-Npc::Npc() {
+
+/*
+string Npc::getName(int whichNpc) {
+	return name[whichNpc];
 }
-Npc::Npc(int num)
-{
+*/
+
+Npc::Npc(int num){
 	type = num;
 	switch (num)
 	{
@@ -61,9 +62,7 @@ Npc::Npc(int num)
 	}
 }
 
-Npc::~Npc()
-{
-}
+Npc::~Npc(){}
 
 string Npc::getName() {
 	return name;
@@ -74,9 +73,9 @@ void Npc::chat(Role player) {
 	{
 	case 0: {
 		if (player.getStory() == 0) {
-			cout << "镇长: 最近镇上不太安宁啊" << endl; 
+			cout << "镇长: 最近镇上不太安宁啊" << endl;
 			system("pause");
-			cout << "你: 怎么了, 出什么事情了" << endl; 
+			cout << "你: 怎么了, 出什么事情了" << endl;
 			system("pause");
 			cout << "镇长: 最近镇子北面的官道突然出现很多以前没有的野物, 厉害得很, 有些猎户都不是他们的对手, 让镇上的居民人心惶惶" << endl;
 			system("pause");
@@ -140,4 +139,17 @@ int Npc::getGoodId() {
 int Npc::getMoney() {
 	return money;
 }
-#endif
+bool Npc::isChatted(int whichNpc) {
+	if (whichNpc == 1)
+		return true;
+	if (whichNpc == 2)
+		return true;
+	if (whichNpc == 3)
+		return true;
+	if (whichNpc == 4)
+		return true;
+	if (whichNpc == 5)
+		return true;
+	if (whichNpc == 5)
+		return false;
+}

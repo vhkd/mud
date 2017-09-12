@@ -17,7 +17,7 @@ public:
 	Role& endFight();//结束战斗,将战斗完后的玩家返回覆盖main里的
 
 	void addMoney(int addMoney);//添加金钱
-	void addFightEndGoods(int addGoods,int num);//添加物品
+	void addFightEndGoods(int* addGoods,int* num);//添加物品
 	void addExp(int addExp);//添加经验
 
 	void recoverHp(Goods goods);//物品回复生命值
