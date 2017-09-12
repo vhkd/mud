@@ -18,7 +18,6 @@ Skill::Skill() {
 }
 Skill::~Skill()
 {
-	cout << "calling" << endl;
 }
 int Skill::getLevel(int whatSkill) {
 	/*

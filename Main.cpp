@@ -189,24 +189,34 @@ menu:
 void readFile() {
 	//读取存档
 		
-	Role player(0);
-	ifstream file("Save.dat", ios_base::in | ios_base::binary);
-	if (!file) {
+	ifstream file1("SaveRole.txt", ios_base::in | ios_base::binary);
+	ifstream file2("SaveBag.txt", ios_base::in | ios_base::binary);
+	if (!file1) {
 		cout << "没有保存的游戏！" << endl;
 		cout << "请重新选择:" << endl;
 
 	}
-	else if (file.read(reinterpret_cast<char *>(&player), sizeof(player))) {
+	else {
 		cout << "读入成功！" << endl;
+		string name;
+		int type, health_max, health, magic_max, magic, attack, exp, level, defend, money, mapId, story;
+		file1 >> name >> type >> health_max >> health >> magic_max >> magic >> attack >> exp >> level >> defend >> money >> mapId >> story;
+		
+		Role player(name, type, health_max, health, magic_max, magic, attack, exp, level, defend, money, mapId, story);
 
-		//player.showBag();		//这里出问题，因为背包是用的容器，重新读取后，地址冲突，暂时没想到好的解决办法
+		while (!file2.eof())
+		{
+			int key;
+			int value;
+			file2 >> key >> value;
+			player.addGoodsToBag(key, value);
+		}
+		player.showBag();
+		file1.close();
+		file2.close();
 		newGame(player);
 	}
-	else {
-		cout << "读入失败！" << endl;
-	}
-	file.close();
-	exit(0);
+	
 }
 
 int main(){

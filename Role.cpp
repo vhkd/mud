@@ -63,6 +63,26 @@ Role::Role(int t){  //1战士2剑客3法师
 	}
 }
 
+Role::Role(string name, int type, int health_max, int health, int magic_max, int magic, int attack, int exp, int level, int defend, int money, int mapId, int story)
+{
+	this->name = name;
+	this->type = type;
+	this->health_max = health_max;
+	this->health = health;
+	this->magic_max = magic_max;
+	this->magic = magic;
+	this->attack = attack;
+	this->exp = exp;
+
+	this->level = level;
+	this->defend = defend;
+	this->money = money;
+	
+	this->mapId = mapId;
+	//this->skill = ;		
+	this->story = story;
+}
+
 void Role::operator=(Role player) {			//重载=实现深复制
 	name = player.getName();
 	type = player.getType();
@@ -76,7 +96,7 @@ void Role::operator=(Role player) {			//重载=实现深复制
 	level = player.getLevel();
 	defend = player.getDefend();	
 	money = player.getMoney();
-	//bag = player.getBag();		
+	bag = player.getBag();		
 
 	mapId = player.getMapId();		
 	//skill = player.getSkill();		
@@ -122,7 +142,6 @@ double Role::useSkill() {
 }
 
 Role::~Role() {
-	cout << "calling ~Role()" << endl;
 }
 
 string Role::getName() {

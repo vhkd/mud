@@ -6,15 +6,34 @@
 using namespace std;
 
 void Save::setToFile(Role player) {
-	ofstream file("Save.dat", ios_base::binary);
-	if (!file) {
+	ofstream file1("SaveRole.txt", ios_base::binary);
+	ofstream file2("SaveBag.txt", ios_base::binary);
+	if (!file1 || !file2) {
 		cout << "无法打开保存文件！" << endl;
 		cout << "保存失败！" << endl;
 	}
-	else if (file.write(reinterpret_cast<char *>(&player), sizeof(player)))
-		cout << "保存成功！" << endl;
-	else cout << "未能保存！" << endl;
-	file.close();
+	else 
+	{
+		file1 << player.getName() << ' '
+			<< player.getType() << ' '
+			<< player.getHealth_max() << ' '
+			<< player.getHealth() << ' '
+			<< player.getMagic() << ' '
+			<< player.getMagic_max() << ' '
+			<< player.getAttack() << ' '
+			<< player.getExp() << ' '
+			<< player.getLevel() << ' '
+			<< player.getDefend() << ' '
+			<< player.getMoney() << ' '
+			<< player.getMapId() << ' '
+			<< player.getStory() << ' ';
+
+		for (const auto &i : player.getBag().getMapBags()) {
+			file2 << i.first << ' ' << i.second << " ";
+		}
+	}
+	file1.close();
+	file2.close();
 }
 
 #endif

@@ -10,6 +10,7 @@ using namespace std;
 class Role {
 public:
 	Role(int type);
+	Role(string name, int type, int health_max, int health, int magic_max, int magic, int attack, int exp, int level, int defend, int money, int mapId, int story);
 	~Role();
 
 	void operator =(Role player);
