@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Role::Role(int t){  //1战士2剑客3法师
+Role::Role(int t){ 
 	mapId = 0;
 	switch (t) {
 	case 0: {
@@ -63,7 +63,7 @@ Role::Role(int t){  //1战士2剑客3法师
 	}
 }
 
-Role::Role(string name, int type, int health_max, int health, int magic_max, int magic, int attack, int exp, int level, int defend, int money, int mapId, int story)
+Role::Role(string name, int type, int health_max, int health, int magic_max, int magic, int attack, int exp, int level, int defend, int money, int mapId, int story, int weapon, int clothes)
 {
 	this->name = name;
 	this->type = type;
@@ -81,6 +81,9 @@ Role::Role(string name, int type, int health_max, int health, int magic_max, int
 	this->mapId = mapId;
 	//this->skill = ;		
 	this->story = story;
+
+	this->weapon = weapon;
+	this->clothes = clothes;
 }
 
 void Role::operator=(Role player) {			//重载=实现深复制
@@ -141,6 +144,69 @@ double Role::useSkill() {
 		}
 }
 
+void Role::showEquip()
+{
+	cout << "当前已装备:" << endl;
+	cout << "武器:";
+	if (weapon == -1) {
+		cout << "无" << endl;
+	}
+	else {
+		cout << goods[weapon].getName() << endl; 
+	}
+	cout << "防具:";
+	if (clothes == -1) {
+		cout << "无" << endl;
+	}
+	else {
+		cout << goods[clothes].getName() << endl;
+	}
+}
+
+void Role::wearEquip(int id)
+{
+	if (goods[id].getType() == 0) {
+		if (weapon != -1) {
+			removeEquip(weapon);
+		}
+		setAttack(getAttack() + goods[id].getAddAttack());
+		weapon = id;
+	}
+	else if (goods[id].getType() == 1) {
+		if (clothes != -1) {
+			removeEquip(clothes);
+		}
+		setDefend(getDefend() + goods[id].getAddDefend());
+		setHealth_max(getHealth_max() + goods[id].getAddMaxHP());
+		setMagic_max(getMagic_max() + goods[id].getAddMaxMP());
+		clothes = id;
+	}
+
+	cout << "已装备 " << goods[id].getName() << endl;
+}
+
+void Role::removeEquip(int id)
+{
+	if (goods[id].getType() == 0) {
+		if (weapon != -1) {
+			cout << "当前无武器" << endl;
+		}
+		setAttack(getAttack() - goods[id].getAddAttack());
+		weapon = -1;
+	}
+	else if (goods[id].getType() == 1) {
+		if (clothes != -1) {
+			cout << "当前无防具" << endl;
+		}
+		setDefend(getDefend() - goods[id].getAddDefend());
+		setHealth_max(getHealth_max() - goods[id].getAddMaxHP());
+		setMagic_max(getMagic_max() - goods[id].getAddMaxMP());
+		clothes = -1;
+	}
+
+	cout << "已换下 " << goods[id].getName() << endl;
+}
+
 Role::~Role() {
 }
 
@@ -168,6 +234,26 @@ int Role::getStory()
 void Role::setStory(int s)
 {
 	story = s;
+}
+
+int Role::getWeapon()
+{
+	return weapon;
+}
+
+void Role::setWeapon(int w)
+{
+	weapon = w;
+}
+
+int Role::getClothes()
+{
+	return clothes;
+}
+
+void Role::setClothes(int c)
+{
+	clothes = c;
 }
 
 int Role::getHealth_max() {

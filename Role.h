@@ -10,7 +10,7 @@ using namespace std;
 class Role {
 public:
 	Role(int type);
-	Role(string name, int type, int health_max, int health, int magic_max, int magic, int attack, int exp, int level, int defend, int money, int mapId, int story);
+	Role(string name, int type, int health_max, int health, int magic_max, int magic, int attack, int exp, int level, int defend, int money, int mapId, int story, int weapon, int clothes);
 	~Role();
 
 	void operator =(Role player);
@@ -52,6 +52,11 @@ public:
 	int getStory();
 	void setStory(int s);
 
+	int getWeapon();
+	void setWeapon(int w);
+	int getClothes();
+	void setClothes(int c);
+
 	Skill getSkill();
 	Bag getBag();
 	void showBag();//显示背包
@@ -65,6 +70,10 @@ public:
 
 	double useSkill();		//使用技能,返回技能的攻击力加成
 
+	void showEquip();//展示当前装备
+	void wearEquip(int id);//穿上装备
+	void removeEquip(int id);//脱下装备
+
 private:
 	string name;
 	int type;
@@ -75,7 +84,7 @@ private:
 	int attack;
 	int exp;
 	//每个等级对应的最高经验值，经验值大于等于就升级
-	 const int levelExp_Max[29] = { 6,12,18,24,30,36,42,48,54,60,69,78,87,96,105,114,123,132,141,150,162,174,186,198,210,225,240,270,300 };
+	const int levelExp_Max[29] = { 6,12,18,24,30,36,42,48,54,60,69,78,87,96,105,114,123,132,141,150,162,174,186,198,210,225,240,270,300 };
 	int exp_Max;		//线性经验值，暂定为最高300
 	int level;
 	int defend;			//防御
@@ -86,5 +95,10 @@ private:
 	Skill skill;		//他所拥有的技能
 	int skillLevel;		//升级带来的技能升级点数
 	int story = 0;//剧情节点
+
+	int weapon = -1;//当前武器id  默认-1为无
+	int clothes = -1; //当前防具id
+
+	Goods goods[24] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 };
 };
 #endif

@@ -33,13 +33,16 @@ void Store::showStores()
 	}
 }
 
-Bag Store::storeToPlayer(Role player, Bag bags)
+Bag Store::storeToPlayer(Role &player, Bag &bags)
 {
 	int goodsId, goodsNum;
+	cout << "24.退出" << endl;
 	cout << "请输入要购买的物品序号" << endl;
 	cin >> goodsId;
-	cout << "请输入要购买的数量" << endl;
+	if (goodsId == 24) return bags;
+	cout << "请输入要购买的数量(输入0退出)" << endl;
 	cin >> goodsNum;
+	if (goodsNum == 0) return bags;
 	int totalPrice = int(goods[goodsId].getPriceBuy()) * int(goodsNum);
 	if (player.getMoney() >= totalPrice)
 	{
@@ -55,13 +58,16 @@ Bag Store::storeToPlayer(Role player, Bag bags)
 	return bags;
 }
 
-Bag Store::playerToStore(Role player, Bag bags)
+Bag Store::playerToStore(Role &player, Bag &bags)
 {
 	int goodsId, goodsNum;
+	cout << "24.退出" << endl;
 	cout << "请输入要卖出的物品序号" << endl;
 	cin >> goodsId;
-	cout << "请输入要卖出的数量" << endl;
+	if (goodsId == 24) return bags;
+	cout << "请输入要卖出的数量(输入0退出)" << endl;
 	cin >> goodsNum;
+	if (goodsNum == 0) return bags;
 	int totalPrice = int(goods[goodsId].getPriceSell()) * int(goodsNum);
 	bags.reduceGoods(goodsId, goodsNum);
 	player.setMoney(player.getMoney() + totalPrice);

@@ -26,7 +26,9 @@ void Save::setToFile(Role player) {
 			<< player.getDefend() << ' '
 			<< player.getMoney() << ' '
 			<< player.getMapId() << ' '
-			<< player.getStory() << ' ';
+			<< player.getStory() << ' '
+			<< player.getWeapon() << ' '
+			<< player.getClothes();
 
 		for (const auto &i : player.getBag().getMapBags()) {
 			file2 << i.first << ' ' << i.second << " ";

@@ -153,12 +153,45 @@ menu:
 
 	}
 	else if (choice == 4) {
-		cout << "1.属性 2.背包 3.技能 4.返回" << endl;
+		cout << "1.属性 2.装备 3.背包 4.技能 5.返回" << endl;
 		int choice;
 		cin >> choice;
-		if (choice == 2) player.showBag();		//显示背包
-		else if (choice == 3) player.showSkill();//显示技能
-		else if (choice == 4 || choice == 1) goto menu;		//这里跳转到menu开头那里显示人物信息
+		if (choice == 2) {
+			player.showEquip();
+			cout << "1.更换装备		2.取下装备		3.退出" << endl;
+			int choiceEquip;
+			cin >> choiceEquip;
+			if (choiceEquip == 1) {
+				player.showBag();
+				cout << "请选择要换上的装备" << endl;
+				int id;
+				cin >> id;
+				player.wearEquip(id);
+				player.getBag().reduceGoods(id ,1);
+			}
+			if (choiceEquip == 2) {
+				cout << "请输入要换下的装备" << endl;
+				cout << "1." << goods[player.getWeapon()].getName() << endl;
+				cout << "2." << goods[player.getClothes()].getName() << endl;
+				int choice;
+				cin >> choice;
+				if (choice == 1) 
+				{ 
+					player.removeEquip(player.getWeapon()); 
+					player.getBag().addGoods(player.getWeapon(), 1);
+				}
+				if (choice == 2)
+				{
+					player.removeEquip(player.getClothes());
+					player.getBag().addGoods(player.getClothes(), 1);
+				}
+			}
+			if (choiceEquip == 3)
+				goto menu;
+		}
+		if (choice == 3) player.showBag();		//显示背包
+		else if (choice == 4) player.showSkill();//显示技能
+		else if (choice == 5 || choice == 1) goto menu;		//这里跳转到menu开头那里显示人物信息
 	}
 	else if (choice == 5) {
 		cout << "1.购买物品		2.售出物品		3.退出" << endl;
@@ -166,7 +199,7 @@ menu:
 		cin >> choiceStore;
 		if (choiceStore == 1) {
 			store.showStores();
-			player.setBag(store.storeToPlayer(player,player.getBag()));
+			player.setBag(store.storeToPlayer(player, player.getBag()));
 		}
 		if (choiceStore == 2) {
 			player.showBag();
@@ -199,10 +232,10 @@ void readFile() {
 	else {
 		cout << "读入成功！" << endl;
 		string name;
-		int type, health_max, health, magic_max, magic, attack, exp, level, defend, money, mapId, story;
-		file1 >> name >> type >> health_max >> health >> magic_max >> magic >> attack >> exp >> level >> defend >> money >> mapId >> story;
+		int type, health_max, health, magic_max, magic, attack, exp, level, defend, money, mapId, story, weapon, clothes;
+		file1 >> name >> type >> health_max >> health >> magic_max >> magic >> attack >> exp >> level >> defend >> money >> mapId >> story >> weapon >> clothes;
 		
-		Role player(name, type, health_max, health, magic_max, magic, attack, exp, level, defend, money, mapId, story);
+		Role player(name, type, health_max, health, magic_max, magic, attack, exp, level, defend, money, mapId, story, weapon, clothes);
 
 		while (!file2.eof())
 		{
