@@ -4,7 +4,8 @@
 
 using namespace std;
 
-Role::Role(int t){ 
+
+Role::Role(int t):task(0){  //1战士2剑客3法师
 	mapId = 0;
 	switch (t) {
 	case 0: {
@@ -12,7 +13,7 @@ Role::Role(int t){
 		break;
 	}
 	case 1: {
-		name = "11111";
+		name = "弦倚";
 		type = 1;
 		health_max = 160;
 		health = 160;
@@ -28,7 +29,7 @@ Role::Role(int t){
 		break;
 	}
 	case 2: {
-		name = "22222";
+		name = "凝幽";
 		type = 2;
 		health_max = 200;
 		health = 200;
@@ -38,13 +39,13 @@ Role::Role(int t){
 		exp = 0;
 	//	exp_Max = 300;			//暂定
 		level = 1;
-		defend = 20;
+		defend = 10;
 		money = 0;
 		skill = Role_2Skill::Role_2Skill();
 		break;
 	}
 	case 3: {
-		name = "33333";
+		name = "拢月";
 		type = 3;
 		health_max = 120;
 		health = 120;
@@ -63,33 +64,10 @@ Role::Role(int t){
 	}
 }
 
-Role::Role(string name, int type, int health_max, int health, int magic_max, int magic, int attack, int exp, int level, int defend, int money, int mapId, int story, int weapon, int clothes)
-{
-	this->name = name;
-	this->type = type;
-	this->health_max = health_max;
-	this->health = health;
-	this->magic_max = magic_max;
-	this->magic = magic;
-	this->attack = attack;
-	this->exp = exp;
-
-	this->level = level;
-	this->defend = defend;
-	this->money = money;
-	
-	this->mapId = mapId;
-	//this->skill = ;		
-	this->story = story;
-
-	this->weapon = weapon;
-	this->clothes = clothes;
-}
-
 void Role::operator=(Role player) {			//重载=实现深复制
 	name = player.getName();
 	type = player.getType();
-	health = player.getHealth_max();
+	health_max = player.getHealth_max();
 	health = player.getHealth();
 	magic_max = player.getMagic_max();
 	magic = player.getMagic();
@@ -101,8 +79,9 @@ void Role::operator=(Role player) {			//重载=实现深复制
 	money = player.getMoney();
 	bag = player.getBag();		
 
+	task = player.getTask();
 	mapId = player.getMapId();		
-	//skill = player.getSkill();		
+	skill = player.getSkill();		
 	story = player.getStory();
 }
 
@@ -139,76 +118,12 @@ double Role::useSkill() {
 		}
 		else {
 			setMagic(getMagic() - skill.getNeedMP(useWhatSkill));
-			cout << "你使用了“" << skill.getName(useWhatSkill) << "”技能，对";			//这里跳转回Filght.cpp继续
+			cout << "你花费"<<skill.getNeedMP(useWhatSkill) <<"点内力使用了“" << skill.getName(useWhatSkill) << "”技能，对";			//这里跳转回Filght.cpp继续
 			return skill.getAddAttack(useWhatSkill) + (1 + (skill.getLevel(useWhatSkill) * 0.1));//返回技能的攻击加成与技能等级提供的攻击加成
 		}
 }
 
-void Role::showEquip()
-{
-	cout << "当前已装备:" << endl;
-	cout << "武器:";
-	if (weapon == -1) {
-		cout << "无" << endl;
-	}
-	else {
-		cout << goods[weapon].getName() << endl; 
-	}
-	cout << "防具:";
-	if (clothes == -1) {
-		cout << "无" << endl;
-	}
-	else {
-		cout << goods[clothes].getName() << endl;
-	}
-}
-
-void Role::wearEquip(int id)
-{
-	if (goods[id].getType() == 0) {
-		if (weapon != -1) {
-			removeEquip(weapon);
-		}
-		setAttack(getAttack() + goods[id].getAddAttack());
-		weapon = id;
-	}
-	else if (goods[id].getType() == 1) {
-		if (clothes != -1) {
-			removeEquip(clothes);
-		}
-		setDefend(getDefend() + goods[id].getAddDefend());
-		setHealth_max(getHealth_max() + goods[id].getAddMaxHP());
-		setMagic_max(getMagic_max() + goods[id].getAddMaxMP());
-		clothes = id;
-	}
-
-	cout << "已装备 " << goods[id].getName() << endl;
-}
-
-void Role::removeEquip(int id)
-{
-	if (goods[id].getType() == 0) {
-		if (weapon != -1) {
-			cout << "当前无武器" << endl;
-		}
-		setAttack(getAttack() - goods[id].getAddAttack());
-		weapon = -1;
-	}
-	else if (goods[id].getType() == 1) {
-		if (clothes != -1) {
-			cout << "当前无防具" << endl;
-		}
-		setDefend(getDefend() - goods[id].getAddDefend());
-		setHealth_max(getHealth_max() - goods[id].getAddMaxHP());
-		setMagic_max(getMagic_max() - goods[id].getAddMaxMP());
-		clothes = -1;
-	}
-
-	cout << "已换下 " << goods[id].getName() << endl;
-}
-
-Role::~Role() {
-}
+Role::~Role() {}
 
 string Role::getName() {
 	return name;
@@ -236,26 +151,6 @@ void Role::setStory(int s)
 	story = s;
 }
 
-int Role::getWeapon()
-{
-	return weapon;
-}
-
-void Role::setWeapon(int w)
-{
-	weapon = w;
-}
-
-int Role::getClothes()
-{
-	return clothes;
-}
-
-void Role::setClothes(int c)
-{
-	clothes = c;
-}
-
 int Role::getHealth_max() {
 	return health_max;
 }
@@ -270,6 +165,10 @@ int Role::getHealth() {
 
 void Role::setHealth(int hp) {
 	health = hp;
+	if ( hp > getHealth_max())
+		health = getHealth_max();
+	if (health < 0)
+		health = 0;
 }
 
 int Role::getMagic_max() {
@@ -287,7 +186,10 @@ int Role::getMagic() {
 
 void Role::setMagic(int mp) {
 	magic = mp;
-
+	if (mp > getMagic_max())
+		magic = getMagic_max();
+	if (mp < 0)
+		magic = 0;
 }
 
 int Role::getAttack() {
@@ -315,13 +217,17 @@ void Role::setExp(int e) {
 	exp = e;
 	for (int i = 0;i < 29;i++)
 		if (exp >= levelExp_Max[i] && exp < levelExp_Max[i + 1]) {
-			setLevel(i);
-			setHealth_max(getHealth_max() + levelExp_Max[i] );
+			setLevel(i+2);
+			setHealth_max(getHealth_max() + levelExp_Max[i]);
 			setMagic_max(getMagic_max() + levelExp_Max[i]);
 			setAttack(getAttack() + levelExp_Max[i]/2);
-			setDefend(getDefend() + levelExp_Max[i]/2);
+			setDefend(getDefend() + levelExp_Max[i]/4);
 			break;
 		}
+}
+
+void Role::setExpSave(int e) {
+	exp = e;
 }
 
 int Role::getLevelExp_max(int whichLevel) {
@@ -334,7 +240,8 @@ int Role::getLevel() {
 
 void Role::setLevel(int l) {
 	skillLevel = l - level;			//每次升级带来的技能升级点数
-	cout << endl;
+	if(level < l)
+		cout << endl<<"恭喜你升到了"<<l<<"级"<<endl;
 	for (; skillLevel > 0;) {
 		cout << "你当前拥有" << skillLevel << "个技能点数，请选择要加点的技能：" << endl;
 
@@ -356,6 +263,10 @@ void Role::setLevel(int l) {
 	level = l;
 }
 
+void Role::setLevelSave(int l) {
+	level = l;
+}
+
 int Role::getMoney() {
 	return money;
 }
@@ -367,7 +278,7 @@ void Role::setMoney(int m) {
 void Role::showRole()
 {
 	cout << endl;
-	cout << "当前人物属性:" <<'\t';
+	cout <<endl<< "当前人物属性:" <<'\t';
 	cout << "姓名:" << name << '\t';
 	cout << "等级:" << level << endl;
 	cout << "气血:" << health << "/" << health_max << '\t';
@@ -390,10 +301,25 @@ void Role::showBag() {
 	bag.showBags();
 }
 
+int Role::getBagWhichGoodsId(int whichGoods) {
+	return bag.getWhichGoodsId(whichGoods);
+
+}
+
+int Role::getBagWhichGoodsNum(int whichGoods) {
+	return bag.getWhichGoodsNum(whichGoods);
+
+}
+
 void Role::addGoodsToBag(int *goodsId, int *num) {
 	cout << endl << "得到了：" << endl;
 	
 	bag.showGoods(goodsId, num);
+	for (int i = 0; goodsId[i] >= 0;i++)
+		if (goodsId[i] == 6 || goodsId[i] == 8 || goodsId[i] == 19) {
+			task.setGoods(goods[goodsId[i]]);
+			task.setIsTaskEnd();
+		}
 	if (bag.getGoodsNum() > 20) {
 		cout << "背包已满，无法添加。" << endl;
 	}
@@ -419,6 +345,8 @@ void Role::addGoodsToBag(int *goodsId, int *num) {
 		cout << "全部成功添加到背包！" << endl << endl;
 	}
 }
+
+
 
 void Role::addGoodsToBag(int goodsId, int num) {
 	cout << endl << "得到了：" << endl;
@@ -449,6 +377,203 @@ void Role::addGoodsToBag(int goodsId, int num) {
 	}
 }
 
+bool Role::subGoodsToBag(int goodsId, int num) {
+	return bag.reduceGoods(goodsId,num);
+}
+
 void Role::setBag(Bag bags){
 	bag = bags;
+}
+
+void Role::savePlayerBag() {
+	bag.saveBag();
+}
+
+/*
+int ** Role::getBagSave()
+{
+	return bag.getSaveBag();
+}
+*/
+
+void Role::newBag() {
+	 Bag bags;
+	 bag = bags;
+}
+
+void Role::setSkill(Skill& newSkill) {
+	for(int i = 1;i <= 4;i++)
+		skill.setLevel(i,newSkill.getLevel(i));
+}
+
+void Role::addSaveGoodsToBag(int goodsId,int num) {
+	bag.addGoods(goodsId, num);
+}
+
+void Role::useDrug() {
+	if (bag.isUseDrug()) {
+		cout << "是否使用药品：	1.是	2.否" << endl;
+		int choice;
+		cin >> choice;
+		if (choice == 2)
+			return;
+		if (choice == 1) {
+			cout << "请选择要使用的药品：" << endl;
+			for (int i = bag.getGoodsNum();i > 0;i--) {
+				for (int j = 20;j < 24; j++)
+					if (getBagWhichGoodsId(i) == j)
+						cout << i << "." << '\t' << goods[getBagWhichGoodsId(i)].getName() << '\t' << getBagWhichGoodsNum(i) << " 件" << endl;
+			}
+			cout << "0.取消" << endl;
+			int choiceGoodsId, choiceGoodsNum;
+			while (true) {
+				cin >> choiceGoodsId;
+				if(choiceGoodsId < 0 || choiceGoodsId > bag.getGoodsNum())
+					cout << "选择错误，请重新选择！" << endl;
+				else break;
+				
+			}
+				choiceGoodsId = getBagWhichGoodsId(choiceGoodsId);
+				cout << "请选择使用多少（输入0取消）：" << endl;
+				cin >> choiceGoodsNum;
+				subGoodsToBag(choiceGoodsId, choiceGoodsNum);
+				cout << "成功使用药品！";
+				if (choiceGoodsId == 20 || choiceGoodsId == 21) {
+					for (int i = choiceGoodsNum;i > 0;i--)
+						setHealth(goods[choiceGoodsId].getAddHP() + getHealth());
+					cout << "共恢复" << goods[choiceGoodsId].getAddHP() * choiceGoodsNum << "点气血。" << endl << endl;
+				}
+				if (choiceGoodsId == 22 || choiceGoodsId == 23) {
+					for (int i = choiceGoodsNum;i > 0;i--)
+						setHealth(goods[choiceGoodsId].getAddMP() + getMagic());
+					cout << "共恢复" << goods[choiceGoodsId].getAddMP() * choiceGoodsNum << "点内力。" << endl << endl;
+				}
+			if (choiceGoodsId == 0) return;
+		}
+	}
+}
+
+void Role::showEquip()
+{
+	cout << "当前已装备:" << endl;
+	cout << "武器:";
+	if (weapon == -1) {
+		cout << "无" << endl;
+	}
+	else {
+		cout << goods[weapon].getName() << endl;
+	}
+	cout << "防具:";
+	if (clothes == -1) {
+		cout << "无" << endl;
+	}
+	else {
+		cout << goods[clothes].getName() << endl;
+	}
+}
+
+void Role::wearEquip(int id)
+{
+	if (goods[id].getType() == 0) {
+		if (weapon != -1) {
+			removeEquip(weapon);
+		}
+		setAttack(getAttack() + goods[id].getAddAttack());
+		weapon = id;
+	}
+	else if (goods[id].getType() == 1) {
+		if (clothes != -1) {
+			removeEquip(clothes);
+		}
+		setDefend(getDefend() + goods[id].getAddDefend());
+		setHealth_max(getHealth_max() + goods[id].getAddMaxHP());
+		setMagic_max(getMagic_max() + goods[id].getAddMaxMP());
+		clothes = id;
+	}
+	bag.reduceGoods(id,1);
+	cout << "已装备 " << goods[id].getName() << endl;
+}
+
+void Role::removeEquip(int id)
+{
+	if (goods[id].getType() == 0) {
+		if (weapon != -1) {
+			cout << "当前无武器" << endl;
+		}
+		setAttack(getAttack() - goods[id].getAddAttack());
+		weapon = -1;
+	}
+	else if (goods[id].getType() == 1) {
+		if (clothes != -1) {
+			cout << "当前无防具" << endl;
+		}
+		setDefend(getDefend() - goods[id].getAddDefend());
+		setHealth_max(getHealth_max() - goods[id].getAddMaxHP());
+		setMagic_max(getMagic_max() - goods[id].getAddMaxMP());
+		clothes = -1;
+	}
+	bag.addGoods(id, 1);
+	cout << "已换下 " << goods[id].getName() << endl;
+}
+
+int Role::getTaskId()
+{
+	return task.getTaskId();
+}
+
+bool Role::getTaskIsEnd()
+{
+	return task.getIsEnd();
+}
+
+Task Role::getTask() {
+	return task;
+}
+
+void Role::setTask(Task newTask){
+	cout << "获得新任务！" << endl;
+	task = newTask;
+}
+
+void Role::setTaskIsEnd(){
+	task.setIsTaskEnd();
+}
+
+string Role::getTaskName()
+{
+	return task.getName();
+}
+
+string Role::getTaskDesc()
+{
+	return task.getDesc();
+}
+
+Goods Role::getTaskGoods()
+{
+	return task.getGoods();
+}
+
+void Role::setTaskGoods(Goods newTaskGoods){
+	task.setGoods(newTaskGoods);
+}
+
+int Role::getWeapon()
+{
+	return weapon;
+}
+
+void Role::setWeapon(int w)
+{
+	weapon = w;
+}
+
+int Role::getClothes()
+{
+	return clothes;
+}
+
+void Role::setClothes(int c)
+{
+	clothes = c;
 }

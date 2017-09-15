@@ -156,6 +156,7 @@
     <ClInclude Include="..\Save.h" />
     <ClInclude Include="..\Skill.h" />
     <ClInclude Include="..\Store.h" />
+    <ClInclude Include="..\Task.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Bag.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="..\Save.cpp" />
     <ClCompile Include="..\Skill.cpp" />
     <ClCompile Include="..\Store.cpp" />
+    <ClCompile Include="..\Task.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

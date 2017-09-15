@@ -9,9 +9,9 @@ class Read {
 public:
 	Read(int roleType);
 	~Read();
-	Role getRole();
+	static Role getRole();
 private:
-	Role player;
+	static Role player;
 };
 
 #endif

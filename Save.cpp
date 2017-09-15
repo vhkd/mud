@@ -5,16 +5,19 @@
 #include<iostream>
 using namespace std;
 
+
 void Save::setToFile(Role player) {
-	ofstream file1("SaveRole.txt", ios_base::binary);
-	ofstream file2("SaveBag.txt", ios_base::binary);
-	if (!file1 || !file2) {
+	ofstream fileRole("SaveRole.dat", ios_base::binary);
+	ofstream fileBag("SaveBag.dat", ios_base::binary);
+	ofstream fileSkill("SaveSkill.dat", ios_base::binary);
+	ofstream fileTask("SaveTask.dat", ios_base::binary);
+	if (!fileRole || !fileBag || !fileSkill || !fileTask) {
 		cout << "无法打开保存文件！" << endl;
 		cout << "保存失败！" << endl;
 	}
 	else 
 	{
-		file1 << player.getName() << ' '
+		fileRole << player.getName() << ' '
 			<< player.getType() << ' '
 			<< player.getHealth_max() << ' '
 			<< player.getHealth() << ' '
@@ -29,13 +32,18 @@ void Save::setToFile(Role player) {
 			<< player.getStory() << ' '
 			<< player.getWeapon() << ' '
 			<< player.getClothes();
-
+		;
+		fileSkill.write(reinterpret_cast<char *>(&player.getSkill()), sizeof(Skill));
+		fileTask.write(reinterpret_cast<char *>(&player.getTask()), sizeof(Task));
 		for (const auto &i : player.getBag().getMapBags()) {
-			file2 << i.first << ' ' << i.second << " ";
+			fileBag << i.first<<' ' << i.second<< ' ';
 		}
+		cout << "保存成功！" << endl;
 	}
-	file1.close();
-	file2.close();
+	fileRole.close();
+	fileBag.close();
+	fileSkill.close();
+
 }
 
 #endif

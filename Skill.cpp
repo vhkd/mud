@@ -16,9 +16,6 @@ Skill::Skill() {
 	skillLevel_Max_4 = 6;
 
 }
-Skill::~Skill()
-{
-}
 int Skill::getLevel(int whatSkill) {
 	/*
 	switch (whatSkill) {
@@ -201,7 +198,7 @@ int Skill::getDebuff(int whatSkill) {
 }
 bool Skill::addLevel(int whatSkill) {
 	if (getLevel(whatSkill) >= getLevel_Max(whatSkill)) {
-		cout << getLevel(whatSkill) << getLevel_Max(whatSkill) << "技能等级已满，无法加点。";
+		cout << "技能等级已满，无法加点。"<<endl;
 		return false;
 	}
 	else {
@@ -216,6 +213,16 @@ bool Skill::addLevel(int whatSkill) {
 		cout << "成功添加一点！" << endl;
 		return true;
 	}
+}
+void Skill::setLevel(int whatSkill,int l){
+	if (whatSkill == 1)
+		skillLevel_1 = l;
+	if (whatSkill == 2)
+		skillLevel_2 = l;
+	if (whatSkill == 3)
+		skillLevel_3 = l;
+	if (whatSkill == 4)
+		skillLevel_4 = l;
 }
 /*for(int i = 1;i <= 4;i++)
 cout<<i<<"."<<getName(i)<<'\t';

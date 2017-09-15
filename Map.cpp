@@ -21,7 +21,8 @@ Map::Map():npc(0){
 
 Map::Map(int p) :npc(p) {
 	position = p;
-	switch (p)
+	/*
+	switch (p)			//我跳不进
 	{
 	case'0': {
 		dx = 5;
@@ -76,6 +77,47 @@ Map::Map(int p) :npc(p) {
 	default:
 		break;
 	}
+	*/
+	if (p == 0) {
+		dx = 5;
+		dy = 2;
+	}
+	if (p == 1) {
+		dx = 4;
+		dy = 2;
+	}
+	if (p == 2) {
+		dx = 3;
+		dy = 2;
+	}
+	if (p == 3) {
+		dx = 3;
+		dy = 1;
+	}
+	if (p == 4) {
+		dx = 2;
+		dy = 1;
+	}
+	if (p == 5) {
+		dx = 2;
+		dy = 0;
+	}
+	if (p == 6) {
+		dx = 3;
+		dy = 3;
+	}
+	if (p == 7) {
+		dx = 2;
+		dy = 3;
+	}
+	if (p == 8) {
+		dx = 1;
+		dy = 3;
+	}
+	if (p == 9) {
+		dx = 0;
+		dy = 3;
+	}
 
 	for (int i = 0; i < 6; i++)
 	{
@@ -102,40 +144,40 @@ void Map::ShowMap()
 	cout << "世界地图:" << endl;
 	cout<<"                                  __________"<<endl;
 	cout<<"                                 |          |"<<endl;
-	cout<<"                                 |          |"<<endl;
+	//cout<<"                                 |          |"<<endl;
 	cout<<"                                 |   昆仑   |"<<endl;
 	cout<<"                                 |    "<<pos[0][3]<<"     |"<<endl;
-	cout<<"                                 |          |"<<endl;
+	//cout<<"                                 |          |"<<endl;
 	cout<<"                                 |__________|"<<endl;
 	cout<<"                                 |          |"<<endl;
-	cout<<"                                 |          |"<<endl;
+	//cout<<"                                 |          |"<<endl;
 	cout<<"                                 |  十里坡  |"<<endl;
 	cout<<"                                 |    "<<pos[1][3]<<"     |"<<endl;
-	cout<<"                                 |          |"<<endl;
+	//cout<<"                                 |          |"<<endl;
 	cout<<"___________ __________           |__________|"<<endl;
 	cout<<"|          |          |          |          |"<<endl;
-	cout<<"|          |          |          |          |"<<endl;
+	//cout<<"|          |          |          |          |"<<endl;
 	cout<<"|   地宫   |  五龙山  |          |  轩辕庙  |"<<endl;
 	cout<<"|    "<< pos[2][0] <<"     |    "<< pos[2][1] <<"     |          |    "<< pos[2][3] <<"     |"<<endl;
-	cout<<"|          |          |          |          |"<<endl;
+	//cout<<"|          |          |          |          |"<<endl;
 	cout<<"|__________|__________|__________|__________|"<<endl;
 	cout<<"           |          |          |          |"<<endl;
-	cout<<"           |          |          |          |"<<endl;
+	//cout<<"           |          |          |          |"<<endl;
 	cout<<"           |   西郊   |  岳州城  |   东郊   |"<<endl;
 	cout<<"           |     "<< pos[3][1] <<"    |    "<< pos[3][2] <<"     |    "<< pos[3][3] <<"     |"<<endl;
-	cout<<"           |          |          |          |"<<endl;
+	//cout<<"           |          |          |          |"<<endl;
 	cout<<"           |__________|__________|__________|"<<endl;
 	cout<<"                      |          |"<<endl;
-	cout<<"                      |          |"<<endl;
+	//cout<<"                      |          |"<<endl;
 	cout<<"                      |   官道   |"<<endl;
 	cout<<"                      |    "<< pos[4][2] <<"     |"<<endl;
-	cout<<"                      |          |"<<endl;
+	//cout<<"                      |          |"<<endl;
 	cout<<"                      |__________|"<<endl;
 	cout<<"                      |          |"<<endl;
-	cout<<"                      |          |"<<endl;
+	//cout<<"                      |          |"<<endl;
 	cout<<"                      |  平江镇  |"<<endl;
 	cout<<"                      |    "<< pos[5][2] <<"     |"<<endl;
-	cout<<"                      |          |"<<endl;
+	//cout<<"                      |          |"<<endl;
 	cout<<"                      |__________|"<<endl;
 	cout << "您现在的位置为" << mapName[position] << endl;
 }
@@ -209,6 +251,7 @@ void Map::Move(char order)
 			break;
 	}
 	pos[dx][dy] = '*';
+	npc = Npc(position);		//更新npc
 	showRoom();
 }
 
@@ -221,7 +264,7 @@ bool Map::isThereChat()
 
 bool Map::isThereFight()
 {
-	if (position == 1 || position == 3 || position == 4 || position == 5 || position == 6 || position == 7 || position == 9)
+	if (position == 1 || position == 3 || position == 4 || position == 5 || position == 6 || position == 7 || position == 8 || position == 9)
 		return true;
 	else return false;
 }
@@ -239,16 +282,16 @@ void Map::setNpc(Npc newNpc) {
 	npc = newNpc;
 }
 
-void Map::chatToNpc(Role player){
-	npc.chat(player);
+Role Map::chatToNpc(Role player){
+	return npc.chat(player);
 }
 
 int Map::getNpcGoodsId(){
-	return npc.getGoodId();
+	return npc.getGoodsId();
 }
 
 int Map::getNpcGoodsNum(){
-	return npc.getGoodNum();
+	return npc.getGoodsNum();
 }
 
 string Map::getName()

@@ -10,8 +10,8 @@ Goods::Goods(int id)
 		desc = "山林樵夫用来砍柴的刀,做工粗糙,勉强可以用作武器";
 		type = 0;
 		addAttack = 10;
-		priceBuy = 20;
-		priceSell = 10;
+		priceBuy = 200;
+		priceSell = 50;
 		break;
 	}
 	case 1: {
@@ -20,8 +20,8 @@ Goods::Goods(int id)
 		desc = "用料和做工都上了一定档次的实用型兵器,行走江湖必备";
 		type = 0;
 		addAttack = 20;
-		priceBuy = 40;
-		priceSell = 20;
+		priceBuy = 400;
+		priceSell = 100;
 		break;
 	}
 	case 2: {
@@ -30,8 +30,8 @@ Goods::Goods(int id)
 		desc = "传说中西楚霸王项羽用过的剑,真实性已无从考据";
 		type = 0;
 		addAttack = 30;
-		priceBuy = 60;
-		priceSell = 30;
+		priceBuy = 600;
+		priceSell = 200;
 		break;
 	}
 	case 3: {
@@ -40,8 +40,8 @@ Goods::Goods(int id)
 		desc = "厚背宽刃的锯齿刀,金光闪闪似黄金打造";
 		type = 0;
 		addAttack = 40;
-		priceBuy = 80;
-		priceSell = 40;
+		priceBuy = 800;
+		priceSell = 400;
 		break;
 	}
 	case 4: {
@@ -50,8 +50,8 @@ Goods::Goods(int id)
 		desc = "剑鞘古朴,刃锐且直,出鞘时如白虹贯日,似剑中君子而得名";
 		type = 0;
 		addAttack = 50;
-		priceBuy = 100;
-		priceSell = 50;
+		priceBuy = 1000;
+		priceSell = 500;
 		break;
 	}
 	case 5: {
@@ -60,8 +60,8 @@ Goods::Goods(int id)
 		desc = "刀背穿有九枚大铁环作为装饰,刀刃又宽又厚,舞动时霸气十足";
 		type = 0;
 		addAttack = 60;
-		priceBuy = 120;
-		priceSell = 60;
+		priceBuy = 1200;
+		priceSell = 500;
 		break;
 	}
 	case 6: {
@@ -70,8 +70,8 @@ Goods::Goods(int id)
 		desc = "剑刃上有形似野兽牙齿的倒刺，可以用来出其不意地夺取敌人武器";
 		type = 0;
 		addAttack = 70;
-		priceBuy = 140;
-		priceSell = 70;
+		priceBuy = 1400;
+		priceSell = 600;
 		break;
 	}
 	case 7: {
@@ -80,8 +80,8 @@ Goods::Goods(int id)
 		desc = "剑刃薄而透明，只有在夜晚借助月光反射才能看到剑刃的形影";
 		type = 0;
 		addAttack = 80;
-		priceBuy = 160;
-		priceSell = 80;
+		priceBuy = 1300;
+		priceSell = 600;
 		break;
 	}
 	case 8: {
@@ -90,8 +90,8 @@ Goods::Goods(int id)
 		desc = "制作极精巧，刀背雕饰着龙雀装饰的环首刀，是世所罕见的珍品";
 		type = 0;
 		addAttack = 90;
-		priceBuy = 180;
-		priceSell = 90;
+		priceBuy = 1200;
+		priceSell = 500;
 		break;
 	}
 	case 9: {
@@ -100,8 +100,8 @@ Goods::Goods(int id)
 		desc = "铸剑名师欧冶子所铸最后一把剑，剑饰星辰，尊贵无双。";
 		type = 0;
 		addAttack = 100;
-		priceBuy = 200;
-		priceSell = 100;
+		priceBuy = 1500;
+		priceSell = 700;
 		break;
 	}
 	case 10: {
@@ -112,8 +112,8 @@ Goods::Goods(int id)
 		addDefend = 5;
 		addMaxHP = 10;
 		addMaxMP = 0;
-		priceBuy = 20;
-		priceSell = 10;
+		priceBuy = 200;
+		priceSell = 70;
 		break;
 	}
 	case 11: {
@@ -124,8 +124,8 @@ Goods::Goods(int id)
 		addDefend = 10;
 		addMaxHP = 20;
 		addMaxMP = 10;
-		priceBuy = 30;
-		priceSell = 15;
+		priceBuy = 300;
+		priceSell = 90;
 		break;
 	}
 	case 12: {
@@ -136,8 +136,8 @@ Goods::Goods(int id)
 		addDefend = 20;
 		addMaxHP = 30;
 		addMaxMP = 30;
-		priceBuy = 50;
-		priceSell = 25;
+		priceBuy = 500;
+		priceSell = 200;
 		break;
 	}
 	case 13: {
@@ -148,8 +148,8 @@ Goods::Goods(int id)
 		addDefend = 30;
 		addMaxHP = 40;
 		addMaxMP = 40;
-		priceBuy = 70;
-		priceSell = 35;
+		priceBuy = 700;
+		priceSell = 300;
 		break;
 	}
 	case 14: {
@@ -160,8 +160,8 @@ Goods::Goods(int id)
 		addDefend = 40;
 		addMaxHP = 50;
 		addMaxMP = 50;
-		priceBuy = 90;
-		priceSell = 45;
+		priceBuy = 900;
+		priceSell = 400;
 		break;
 	}
 	case 15: {
@@ -172,8 +172,8 @@ Goods::Goods(int id)
 		addDefend = 40;
 		addMaxHP = 50;
 		addMaxMP = 50;
-		priceBuy = 90;
-		priceSell = 45;
+		priceBuy = 900;
+		priceSell = 400;
 		break;
 	}
 	case 16: {
@@ -184,8 +184,8 @@ Goods::Goods(int id)
 		addDefend = 40;
 		addMaxHP = 50;
 		addMaxMP = 50;
-		priceBuy = 90;
-		priceSell = 45;
+		priceBuy = 800;
+		priceSell = 370;
 		break;
 	}
 	case 17: {
@@ -196,8 +196,8 @@ Goods::Goods(int id)
 		addDefend = 40;
 		addMaxHP = 50;
 		addMaxMP = 50;
-		priceBuy = 90;
-		priceSell = 45;
+		priceBuy = 900;
+		priceSell = 400;
 		break;
 	}
 	case 18: {
@@ -208,8 +208,8 @@ Goods::Goods(int id)
 		addDefend = 40;
 		addMaxHP = 50;
 		addMaxMP = 50;
-		priceBuy = 90;
-		priceSell = 45;
+		priceBuy = 900;
+		priceSell = 400;
 		break;
 	}
 	case 19: {
@@ -220,8 +220,8 @@ Goods::Goods(int id)
 		addDefend = 40;
 		addMaxHP = 50;
 		addMaxMP = 50;
-		priceBuy = 90;
-		priceSell = 45;
+		priceBuy = 1000;
+		priceSell = 450;
 		break;
 	}
 	case 20: {
@@ -230,8 +230,8 @@ Goods::Goods(int id)
 		desc = "常见的疗伤药,补充少量气血";
 		type = 2;
 		addHP = 30;
-		priceBuy = 10;
-		priceSell = 5;
+		priceBuy = 90;
+		priceSell = 10;
 		break;
 	}
 	case 21: {
@@ -240,7 +240,7 @@ Goods::Goods(int id)
 		desc = "散发着香气的紫色药丸,补充大量气血";
 		type = 2;
 		addHP = 60;
-		priceBuy = 20;
+		priceBuy = 110;
 		priceSell = 10;
 		break;
 	}
@@ -250,8 +250,8 @@ Goods::Goods(int id)
 		desc = "名贵药物精心炼成的丹药,补充少量内力";
 		type = 2;
 		addMP = 30;
-		priceBuy = 10;
-		priceSell = 5;
+		priceBuy = 80;
+		priceSell = 10;
 		break;
 	}
 	case 23: {
@@ -260,8 +260,8 @@ Goods::Goods(int id)
 		desc = "有着浓郁香气的药丸,补充大量内力";
 		type = 2;
 		addMP = 60;
-		priceBuy = 20;
-		priceSell = 10;
+		priceBuy = 100;
+		priceSell = 15;
 		break;
 	}
 	default:

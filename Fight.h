@@ -5,6 +5,8 @@
 #include "Bag.h"
 #include "Skill.h"
 #include "Role.h"
+#include"Goods.h"
+
 class Fight {
 
 public:
@@ -15,13 +17,14 @@ public:
 	void enemyFight();	//怪物的随机攻击
 	bool isFightEnd();//判断是否结束
 	Role& endFight();//结束战斗,将战斗完后的玩家返回覆盖main里的
+	Role& runEndFight();	//逃跑结束战斗
 
 	void addMoney(int addMoney);//添加金钱
 	void addFightEndGoods(int* addGoods,int* num);//添加物品
 	void addExp(int addExp);//添加经验
 
-	void recoverHp(Goods goods);//物品回复生命值
-	void recoverMp(Goods goods);//物品回复法力值
+	void recoverHpOrMp();//物品回复生命值
+
 
 	//void RoleuseSkill();	//战斗角色中使用技能
 
@@ -32,6 +35,7 @@ private:
 	Enemy enemy;//战斗的怪物
 	int round;//回合数
 	double hurt;//战斗产生的伤害值
+	Goods goods[24] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 };
 };
 
 #endif

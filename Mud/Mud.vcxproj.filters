@@ -45,6 +45,9 @@
     <ClInclude Include="..\Save.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Task.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Enemy.cpp">
@@ -78,6 +81,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\Npc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Task.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

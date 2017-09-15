@@ -15,8 +15,8 @@ public:
 	~Store();
 
 	void showStores();
-	Bag storeToPlayer(Role &player, Bag &bags);		//返回一个已经操作过的Role对象
-	Bag playerToStore(Role &player, Bag &bags);
+	Role storeToPlayer(Role player);		//返回一个已经操作过的背包
+	Role playerToStore(Role player);
 	
 private:
 	map<int, int> stores;

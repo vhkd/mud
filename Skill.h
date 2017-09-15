@@ -8,10 +8,10 @@
 class Skill {
 public:
 	Skill();
-	~Skill();
+	~Skill() {};
 	int getLevel(int whatSkill);		//判断技能等级（是否为零尚未习得）对应伤害
 	bool addLevel(int whatSkill);	    //增加技能等级，每次一级
-										//void setLevel(int whatSkill);		//设置技能等级
+	void setLevel(int whatSkill,int l);		//设置技能等级
 
 	int getLevel_Max(int whatSkill);	//得到技能的最高等级
 	string getName(int whatSkill);		//得到技能名字

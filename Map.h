@@ -24,7 +24,7 @@ public:
 
 	string getNpcName();		//得到当前npc名字
 	void setNpc(Npc newNpc);
-	void chatToNpc(Role player);
+	Role chatToNpc(Role player);
 	int getNpcGoodsId();
 	int getNpcGoodsNum();
 	string getName();

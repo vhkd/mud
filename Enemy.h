@@ -32,8 +32,6 @@ public:
 	int getDefend();
 	void setDefend(int d);
 
-	int getDeathNum();		//得到怪物死亡次数
-	void setDeathNum();		//累计怪物死亡次数
 
 	int* getGoodsId();		//掉落物品
 	int* getGoodsNum();		//掉落物品数量
@@ -54,17 +52,19 @@ protected:
 	int attack;
 	int defend;
 
-	int deathNum;	//怪物死亡数次，用来判断
 	int goodsId[4]; //打死怪物会掉落的物品
 	int goodsNum[4];//打死怪物会掉落的物品数量
 	int exp;  //打死怪物增加的经验
 	int money;  //打死怪物增加的金钱
 };
 
-class Enemy_Small :public Enemy {	//小怪
+class Enemy_Small {	//小怪
 public:
 	Enemy_Small();
 	~Enemy_Small();
+private:
+	int health;
+	int attack;
 };
 
 class Enemy_Boss :public Enemy { //大怪
@@ -74,77 +74,4 @@ public:
 	~Enemy_Boss() {};
 
 };
-
-//怪物一
-
-class Enemy_1 :public Enemy_Boss {
-public:
-	Enemy_1();
-	~Enemy_1();
-	double useSkill();
-};
-
-//怪物二
-
-class Enemy_2 :public Enemy_Boss {
-public:
-	Enemy_2();
-	~Enemy_2();
-	double useSkill();
-};
-
-//怪物三
-
-class Enemy_3 :public Enemy_Boss {
-public:
-	Enemy_3();
-	~Enemy_3();
-	double useSkill();
-};
-
-//怪物四
-
-class Enemy_4 :public Enemy_Boss {
-public:
-	Enemy_4();
-	~Enemy_4();
-	double useSkill();
-};
-
-//怪物五
-
-class Enemy_5 :public Enemy_Boss {
-public:
-	Enemy_5();
-	~Enemy_5();
-	double useSkill();
-};
-
-//怪物六
-
-class Enemy_6 :public Enemy_Boss {
-public:
-	Enemy_6();
-	~Enemy_6();
-	double useSkill();
-};
-
-//怪物七
-
-class Enemy_7 :public Enemy_Boss {
-public:
-	Enemy_7();
-	~Enemy_7();
-	double useSkill();
-};
-
-//怪物八
-
-class Enemy_8 :public Enemy_Boss {
-public:
-	Enemy_8();
-	~Enemy_8();
-	double useSkill();
-};
-
 #endif
