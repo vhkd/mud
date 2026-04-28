@@ -33,3 +33,19 @@
 
 
 *.suo
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.VC.db
+*.sdf
+*.ilk
+*.pdb
+*.idb
+*.tlog
+*.lastbuildstate
+*.unsuccessfulbuild
+Debug/
+x64/
+build/
+savegame.txt
+mud
